@@ -1,0 +1,118 @@
+html {
+	overflow-y: scroll;
+	}
+
+body {
+	margin: 0;
+	}
+
+#header{
+    position: fixed;
+	text-align:center;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #d4cbb4;
+    color: black;
+}
+
+h1 {font-family: 'interstate';
+	sans-serif; 
+	font-weight:700;}
+
+/* Background color for top navigation */
+.topnav {
+  background-color: #dba458;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  padding:5px;
+}
+
+/* Links inside the navigation bar */
+.topnav a {
+  float: center;
+  color: black;
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: "interstate", sans-serif;
+}
+
+/* Nav bar links hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Color to the active/current link */
+.topnav a.active {
+  background-color: #91580c;
+  color: white;
+}
+
+#main{
+   width: 100%;
+   background: url('crust1.png') no-repeat;
+   background-attachment: fixed;
+   background-position: center center;
+   background-size: cover;
+   margin: 100px 0 0 0;
+   padding: 20px 0 20px 0;
+}
+
+#people{
+   /* width: 100%; */
+   margin: 100px 0 0 0;
+   padding: 20px 0 20px 0;
+   background-color: #d4cbb4;
+}
+
+
+.reg {
+	font-family: "interstate", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	text-align:left;
+	line-height: 26px;
+	background-color: rgb(230,218,202,0.8);
+	border-radius: 25px;
+	margin-top: 25px;
+	padding: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+.person {
+	font-family: "interstate", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 720px;
+	/* float: center; */
+	overflow: hidden;
+	margin-block-start: 10px;
+	display: flex;
+}
+.person h1 {
+	font-size: 17px;
+	line-height: 18px;
+	margin-block-start: 5px;
+    margin-block-end: 5px;
+}
+
+.person p {
+	font-size: 13px;
+	line-height: 19px;
+	margin-block-start: 5px;
+    margin-block-end: 5px;
+}
+
+.person img {
+	padding: 10px 20px 0px 0px;
+}
