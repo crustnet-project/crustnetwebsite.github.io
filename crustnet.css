@@ -120,7 +120,8 @@ h1 {font-family: 'interstate';
 	height: auto;
 	border-radius: 8px;
 	object-fit: cover;
-}
+	margin-top: 10px; /* or 6px or 8px — try a few */
+  }
 
 @media screen and (max-width: 700px) {
   .person {
@@ -128,9 +129,3 @@ h1 {font-family: 'interstate';
     align-items: center;
     text-align: center;
   }
-
-  .person img {
-    padding: 0;
-    margin-bottom: 10px;
-  }
-}
