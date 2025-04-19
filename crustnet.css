@@ -90,29 +90,47 @@ h1 {font-family: 'interstate';
 	font-family: "interstate", sans-serif;
 	font-weight: 500;
 	font-style: normal;
-	text-align:left;
+	text-align: left;
 	margin-left: auto;
 	margin-right: auto;
-	width: 720px;
-	/* float: center; */
+	max-width: 720px;
 	overflow: hidden;
 	margin-block-start: 10px;
 	display: flex;
+	align-items: flex-start;
+	gap: 20px;
 }
+
 .person h1 {
 	font-size: 17px;
 	line-height: 18px;
 	margin-block-start: 5px;
-    margin-block-end: 5px;
+	margin-block-end: 5px;
 }
 
 .person p {
 	font-size: 13px;
 	line-height: 19px;
 	margin-block-start: 5px;
-    margin-block-end: 5px;
+	margin-block-end: 5px;
 }
 
 .person img {
-	padding: 10px 20px 0px 0px;
+	max-width: 160px;
+	height: auto;
+	border-radius: 8px;
+	object-fit: cover;
+}
+
+@media screen and (max-width: 700px) {
+  .person {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .person img {
+    padding: 0;
+    margin-bottom: 10px;
+  }
 }
