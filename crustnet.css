@@ -132,7 +132,7 @@ h1 {font-family: 'interstate';
 }
 
 /* COMING SOON block */
-.soon {
+#soon {
   font-family: "interstate", sans-serif;
   font-weight: 500;
   font-style: normal;
