@@ -152,3 +152,9 @@ h1 {font-family: 'interstate';
 	margin-right: auto;
 	width: 800px;
 }
+.reg p {
+	font-size: 13px;
+	line-height: 19px;
+	margin-block-start: 5px;
+	margin-block-end: 5px;
+}
