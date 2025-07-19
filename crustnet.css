@@ -137,8 +137,7 @@ h1 {font-family: 'interstate';
    background-color: #d4cbb4;
 }
 
-
-.reg {
+.soon_reg {
 	font-family: "interstate", sans-serif;
 	font-weight: 500;
 	font-style: normal;
@@ -152,7 +151,7 @@ h1 {font-family: 'interstate';
 	margin-right: auto;
 	width: 800px;
 }
-.reg p {
+.soon_reg p {
 	font-size: 13px;
 	line-height: 19px;
 	margin-block-start: 5px;
