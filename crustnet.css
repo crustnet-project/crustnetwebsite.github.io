@@ -32,7 +32,6 @@ h1 {font-family: 'interstate';
 
 /* Links inside the navigation bar */
 .topnav a {
-<!-- float: center; -->
   display: inline-block;
   color: black;
   text-align: center;
