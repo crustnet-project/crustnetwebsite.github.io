@@ -32,7 +32,8 @@ h1 {font-family: 'interstate';
 
 /* Links inside the navigation bar */
 .topnav a {
-  float: center;
+<!-- float: center; -->
+  display: inline-block;
   color: black;
   text-align: center;
   padding: 20px 20px;
@@ -125,6 +126,37 @@ h1 {font-family: 'interstate';
 
 @media screen and (max-width: 700px) {
   .person {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* COMING SOON block */
+.soon {
+  font-family: "interstate", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+  overflow: hidden;
+  margin-block-start: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.soon h1 {
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 700px) {
+  .soon {
     flex-direction: column;
     align-items: center;
     text-align: center;
