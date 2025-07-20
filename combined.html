@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<link href="lib/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="lib/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="lib/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="lib/leaflet-1.3.1/leaflet.js"></script>
+<link href="lib/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="lib/proj4-2.6.2/proj4.min.js"></script>
+<script src="lib/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="lib/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="lib/leaflet-binding-2.2.2/leaflet.js"></script>
+<link href="lib/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="lib/datatables-binding-0.33/datatables.js"></script>
+<link href="lib/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="lib/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="lib/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="lib/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="lib/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+</head>
+<body>
+<h2>CrustNet Node Map</h2>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-cd85a1c1c2ee07d00f45" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-cd85a1c1c2ee07d00f45">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[46.6658784,46.92902,43.228411,43.470586,49.130769,26.623056,64.08270400000001,31.9167,34.47592,33.649347,33.43209,32.611975,36.435714],[-114.0000254,-113.52313,-116.737878,-119.691972,-107.527089,-103.738705,-21.634182,-112.880386,-106.240099,-111.858105,-117.195276,-106.74135,-114.21492],6,null,null,{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.8},null,null,null,null,["MPG","LEF","REY","NGB","GNP","MBR","ICE","OPN","DCP","MSC","SME","JOR","GBN"],{"interactive":false,"permanent":true,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"style":{"font-size":"12px","color":"black","background":"rgba(255,255,255,0.7)","padding":"2px 4 px","border-radius":"3px"},"className":"","sticky":true},null]}],"limits":{"lat":[26.623056,64.08270400000001],"lng":[-119.691972,-21.634182]},"setView":[[40,-100],4,[]]},"evals":[],"jsHooks":[]}</script>
+<hr/>
+<h2>CrustNet Node Table</h2>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-63d75bfcd19d940942e8" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-63d75bfcd19d940942e8">{"x":{"filter":"none","vertical":false,"data":[["MPG","LEF","REY","NGB","GNP","MBR","ICE","OPN","DCP","MSC","SME","JOR","GBN"],["MPG Ranch","Lubrecht Experimental Forest","Reynolds Creek","Northern Great Basin Experimental Range","Grasslands National Park","Mapimí Biosphere Reserve","Iceland","Organ Pipe National Monument","Deer Canyon Preserve","McDowell Sonoran Conservancy","Santa Margarita Ecological Reserve","Jornada","Gold Butte National Monument"],["Montana","Montana","Idaho","Oregon","Saskatchewan","Chihuahua",null,"Arizona","New Mexico","Arizona","California","New Mexico","Nevada"],["USA","USA","USA","USA","Canada","Mexico","Iceland","USA","USA","USA","USA","USA","USA"],["1, 2, 3","1, 2, 3","1, 2, 3","1, 2","1, 2","1, 2","1, 2","1, 2, 3","1, 2, 3","1, 2, 3","1, 2, 3","1, 2","1, 2, 3"],["full installation","full installation","full installation","full installation","partial installation","partial installation","partial installation","planning","planning","planning","planning","partial installation","planning"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>NodeCode<\/th>\n      <th>Node<\/th>\n      <th>Region<\/th>\n      <th>Country<\/th>\n      <th>StudyTiers<\/th>\n      <th>Status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"searching":true,"info":false,"scrollX":true,"columnDefs":[{"name":"NodeCode","targets":0},{"name":"Node","targets":1},{"name":"Region","targets":2},{"name":"Country","targets":3},{"name":"StudyTiers","targets":4},{"name":"Status","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</body>
+</html>
