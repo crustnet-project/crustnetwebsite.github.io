@@ -79,6 +79,19 @@
       <div class="swiper-button-next"></div>
     </div>
 </div>
-
+  <!-- Initiate swiper just before closing body -->
+    <script>
+      const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
 </body>
 </html>
