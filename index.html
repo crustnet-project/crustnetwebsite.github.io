@@ -104,6 +104,7 @@
   
   <!-- Initiate swiper just before closing body -->
     <script>
+      window.addEventListener('DOMContentLoaded', () =>{
       const swiper = new Swiper(".mySwiper", {
         loop: true,
         pagination: {
@@ -115,6 +116,8 @@
           prevEl: ".swiper-button-prev",
         },
       });
+      });
     </script>
+  
 </body>
 </html>
