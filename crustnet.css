@@ -56,7 +56,7 @@ h1 {font-family: 'interstate';
 
 #main{
    width: 100%;
-   background: url('crust1.png') no-repeat;
+   background: url('photos/crust1.png') no-repeat;
    background-attachment: fixed;
    background-position: center center;
    background-size: cover;
