@@ -8,6 +8,7 @@ body {
 
 #header{
     position: fixed;
+	z-index: 9999;
 	text-align:center;
     top: 0;
     left: 0;
