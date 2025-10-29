@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CrustNet Tier Calculator</title>
+  <!-- Load site fonts/colors -->
+  <link rel="stylesheet" href="https://use.typekit.net/ocd6jfq.css">
+  <link rel="stylesheet" href="https://crustnet.org/crustnet.css" />
+
+  <style>
+    /*
+      Scoped, component-first styles. Nothing global; all under #onboarding.
+      Typography defaults to Interstate (via Typekit) with robust fallbacks.
+    */
+    #onboarding {
+      --cn-font: "interstate", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      --cn-ink: #1b1f23;
+      --cn-muted: #57534e;
+      --cn-sand: #d4cbb4;
+      --cn-border: #e6e2d9;
+      --cn-accent: #91580c;
+      --cn-card: #ffffff;
+      --cn-bg: #f6f1e8;
+      font-family: var(--cn-font);
+      color: var(--cn-ink);
+      line-height: 1.45;
+      font-size: 16px;
+    }
+    #onboarding .muted { color: var(--cn-muted); }
+
+    /* Layout */
+    #onboarding .wrap { max-width: 1100px; margin: 0 auto; padding: 14px 18px; }
+    #onboarding main { max-width: 1100px; margin: 0 auto; padding: 18px; display: grid; gap: 18px; grid-template-columns: 1.1fr 1fr; }
+    @media (max-width: 980px){ #onboarding main{ grid-template-columns: 1fr; } }
+
+    /* Header (uses site sand color) */
+    #onboarding header { position: sticky; top: 0; z-index: 10; background: var(--cn-sand); color: black; border-bottom: 1px solid var(--cn-border); }
+    #onboarding h1 { font-weight: 700; font-size: 20px; margin: 0; }
+
+    /* Panels & cards */
+    #onboarding .panel { background: var(--cn-card); border: 1px solid var(--cn-border); border-radius: 16px; padding: 16px; }
+    #onboarding .panel h2 { font-weight: 700; font-size: 16px; margin: 0 0 8px; }
+    #onboarding .card { background: var(--cn-card); border: 1px solid var(--cn-border); border-radius: 12px; padding: 12px; }
+    #onboarding .card h3 { font-weight: 700; font-size: 15px; margin: 0 0 6px; }
+
+    /* Forms & options */
+    #onboarding fieldset { border: none; padding: 0; margin: 0; }
+    #onboarding legend { font-weight: 700; margin-bottom: 8px; }
+    #onboarding .opt { display: flex; gap: 10px; align-items: flex-start; background: #fffdf8; border: 1px solid var(--cn-border); border-radius: 12px; padding: 10px; }
+    #onboarding .opt input { margin-top: 2px; }
+    #onboarding .badge { display: inline-block; font-size: 12px; padding: 2px 6px; border: 1px solid var(--cn-border); border-radius: 999px; background: #f8efe1; }
+
+    /* Controls */
+    #onboarding .controls-inline{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:6px 0 10px; }
+    #onboarding button{ font: inherit; cursor: pointer; background: #fffdf8; border: 1px solid var(--cn-border); border-radius: 10px; padding: 8px 10px; }
+    #onboarding .pill{ display:inline-flex; gap:6px; align-items:center; padding:6px 10px; background:#fffdf8; border:1px solid var(--cn-border); border-radius:999px; }
+
+    /* Lists & text */
+    #onboarding p{ margin:8px 0; }
+    #onboarding ul, #onboarding ol{ margin:6px 0 0 18px; padding:0; }
+    #onboarding li{ margin:4px 0; }
+    #onboarding .small{ font-size:13px; }
+    #onboarding .divider{ border:0; border-top:1px solid var(--cn-border); margin:10px 0; }
+
+    /* Key-value rows */
+    #onboarding .kvs{ display:grid; grid-template-columns:1fr; gap:6px; }
+    #onboarding .kv{ display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--cn-border); }
+    #onboarding .kv .k{ color:var(--cn-muted); }
+    #onboarding .kv .v{ font-weight:700; }
+  </style>
+</head>
+<body style="background:#f6f1e8;">
+  <section id="onboarding">
+    <header>
+      <div class="wrap">
+        <h1>CrustNet Tier Calculator</h1>
+        <div class="muted small">Pick your tiers and options on the left. The right side updates instantly. Numbers are placeholders you can tune later.</div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT: choices -->
+      <section class="panel" aria-labelledby="choices-h">
+        <h2 id="choices-h">Your plan</h2>
+        <div class="grid" style="display:grid; gap:14px;">
+
+          <!-- Tier 1 (mandatory) -->
+          <fieldset>
+            <legend>Tier 1 (one-time survey) <span class="badge">mandatory</span></legend>
+            <label class="opt" aria-disabled="true"><input type="checkbox" id="t1" checked disabled /> <div>
+              <div><strong>Include Tier 1</strong> — <span class="muted">fixed at 10 plots and 3 transects</span></div>
+              <div class="small muted">Effort: 5-6 people, ~2 days total, one visit.</div>
+            </div></label>
+          </fieldset>
+
+          <!-- Tier 2 -->
+          <fieldset>
+            <legend>Tier 2 (simple experiments + monitoring)</legend>
+            <label class="opt"><input type="checkbox" id="t2_main" /> <div>
+              <div><strong>Disturbance-Recovery experiment</strong> <span class="badge">+16 plots</span></div>
+              <div class="small muted">Adds monitoring visits. 3-year commitment.</div>
+            </div></label>
+
+            <label class="opt"><input type="checkbox" id="t2_addon" /> <div>
+              <div><strong>Optional add-on for Disturbance-Recovery</strong> <span class="badge">+8 plots</span></div>
+              <div class="small muted">Only available if Disturbance-Recovery is selected.</div>
+            </div></label>
+
+            <label class="opt"><input type="checkbox" id="t2_grad" /> <div>
+              <div><strong>Disturbance Gradient experiment</strong> <span class="badge" id="grad-plots-badge">+10 plots</span></div>
+              <div class="small muted">If D-R is also selected, this becomes +8 plots.</div>
+            </div></label>
+          </fieldset>
+
+          <!-- Tier 3 -->
+          <fieldset>
+            <legend>Tier 3 (infrastructure and optional components)</legend>
+            <label class="opt"><input type="checkbox" id="t3_drought" /> <div>
+              <div><strong>Drought component</strong></div>
+              <div class="small muted">0.5 day x 2 people per extra visit; two extra visits over 3 years; equipment ~ $1000.</div>
+            </div></label>
+
+            <label class="opt"><input type="checkbox" id="t3_common" /> <div>
+              <div><strong>Common garden component</strong></div>
+              <div class="small muted">Coordination with PI team required. Not required for all participants.</div>
+            </div></label>
+
+            <label class="opt"><input type="checkbox" id="t3_ncycle" /> <div>
+              <div><strong>N-cycling & spectral reflectance of biocrust types</strong> <span class="badge">no return visits</span></div>
+              <div class="small muted">Can be completed with Tier 1. Generates up to 48 petri-dish samples per site.</div>
+            </div></label>
+          </fieldset>
+
+          <div class="controls-inline">
+            <button id="reset">Reset</button>
+            <button id="print">Print</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- RIGHT: outputs -->
+      <section class="panel" aria-labelledby="out-h">
+        <h2 id="out-h">Requirements and outputs</h2>
+
+        <div class="out" style="display:grid; gap:12px;">
+          <!-- Summary line -->
+          <div class="card" id="summary">
+            <h3>Summary</h3>
+            <div class="kvs">
+              <div class="kv"><div class="k">Selected tiers</div><div class="v" id="selTiers">Tier 1</div></div>
+              <div class="kv"><div class="k">Tier 1 footprint</div><div class="v">1 ha area: 10 plots, 3 transects</div></div>
+              <div class="kv"><div class="k">Tier 2 plots</div><div class="v" id="totalPlots">0</div></div>
+            </div>
+          </div>
+
+          <!-- Crew preset placed here per your layout preference -->
+
+
+          <!-- Time by visit (single list) -->
+          <div class="card" id="time">
+                <div class="controls-inline" id="crewbox">
+          <span class="pill"><input type="radio" name="crew" id="crew6" checked> <label for="crew6">Crew of 6</label></span>
+          <span class="pill"><input type="radio" name="crew" id="crew2"> <label for="crew2">Crew of 2</label></span>
+            </div>
+        <h3>Estimated time by visit</h3>
+            <ul id="timeList"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Papers you will be part of</h3>
+            <ul id="papers"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Supplies you provide</h3>
+            <ul id="provideList"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Supplies shipped to you in the kit</h3>
+            <ul id="kit"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Samples you send back to us</h3>
+            <ul id="samples"></ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </section>
+
+  <script>
+    // -----------------------------
+    // Data model — tweak freely
+    // -----------------------------
+    const DATA = {
+      tiers: {
+        t1: {
+          label: 'Tier 1',
+          effort_person_days: 10, // 5.5 people x 2 days mid-point
+          papers: [
+            'Automatic co-authorship on 4 core Tier 1 papers (2 co-authors per group)',
+            'Co-authorship on a CrustNet data paper'
+          ],
+          provide_list: [
+            ['— Tier 1 base —'],
+            'Printed datasheets and protocol',
+            'Clipboard; pencils, pens, sharpies',
+            'GPS, clinometer, compass',
+            'Biocrust ID and plant ID guides',
+            'Transect tape (>30 m) with metal stake',
+            'Aluminum tags (2 per plot), staples (4 per plot)',
+            'Large quadrat (constructed)',
+            'Small quadrat (constructed)',
+            '25-point cover frame (constructed)',
+            'Mallet (for infiltration ring)',
+            'Pin flags; knee pads',
+            'Photos ruler (0.35 m or 0.7 m); umbrella; white board; dry erase marker',
+            'Photo balance cards',
+            'Small and medium rulers (cm)',
+            'Roughness chain with known length',
+            'Aggregate stability kit and small ped sampler (record box ID and position)',
+            'Infiltration metal ring, wood block, water bottle marked at 100 mL, Saran wrap, timer',
+            'Soil margin trowel marked at 1 and 5 cm; 50 mL tube marked at 5 cm',
+            'Ziploc bags; sharpie',
+            'Molecular tubes; labels; transfer spoon; ethanol or isopropanol',
+            'Paper bags; toilet paper/paper towels for vouchers'
+          ],
+          kit: [
+            "Jeweler's chain",
+            'N-fix tubes',
+            'Photo balance cards',
+            'Infiltrometer ring',
+            'Soil aggregate stability kit',
+            'RNAlater',
+            '5 mL tubes for DNA/RNA subsamples'
+          ],
+          samples: [
+            '1 surface composite sample in a ziploc',
+            '1 subsurface composite sample in a ziploc',
+            '20 N-fix cores (2 per S-F plot) in N-fix tubes',
+            '10 scraped surface 0-1 cm samples (120 g each) in ziplocs',
+            '10 subsurface 1-5 cm samples (120 g each) in ziplocs',
+            '12 RNAlater subsamples (one per S-F surface scrape + both composites) in 5 mL tubes',
+            '~75 trait specimens in tupperware + tissue'
+          ]
+        },
+        t2: {
+          label: 'Tier 2',
+          effort_person_days_initial: 16.5, // 5.5 people x 3 days
+          revisit_fraction: 0.30, // each revisit as fraction of initial
+          papers: [
+            'Co-authorship on 4-5 core Tier 2 papers (2 co-authors per contributing group)'
+          ],
+          provide_additions: [
+            ['— Tier 2 additions —'],
+            'Sledgehammer (for plot installation)',
+            'Additional N-fix tubes per added plots',
+            'Extra RNAlater and 5 mL tubes',
+            'Extra ziplocs for plot scrapes'
+          ],
+          samples_per_full_component: [
+            '40 scraped surface 0-1 cm samples (120 g each) in plastic bags',
+            '40 RNAlater subsamples in 5 mL tubes',
+            '40 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'
+          ]
+        },
+        t3: {
+          label: 'Tier 3',
+          drought: { effort_per_visit_person_days: 1, extra_visits: 2 }, // 0.5 day x 2 people
+          common: { setup_person_days: 6, note: 'Requires coordination with PI team' },
+          ncycle: { samples: 'Up to 48 petri-dish samples per site (no return visits needed)' },
+          papers: [ 'Co-authorship on 2 core Tier 3 papers (2 co-authors per contributing group)' ]
+        }
+      }
+    };
+
+    // Tier 2 plot math
+    function calcTier2Plots({ dr, addon, grad }){
+      let plots = 0;
+      if (dr) plots += 16;
+      if (addon && dr) plots += 8; // only if DR selected
+      if (grad && dr) plots += 8; else if (grad && !dr) plots += 10;
+      return plots;
+    }
+
+    function daysForCrew(personDays, crew){ return (personDays / crew); }
+
+    // DOM handles
+    const el = id => document.getElementById(id);
+    const t2_main = el('t2_main');
+    const t2_addon = el('t2_addon');
+    const t2_grad = el('t2_grad');
+    const t3_drought = el('t3_drought');
+    const t3_common = el('t3_common');
+    const t3_ncycle = el('t3_ncycle');
+
+    const gradBadge = el('grad-plots-badge');
+    const selTiers = el('selTiers');
+    const totalPlots = el('totalPlots');
+
+    const timeList = el('timeList');
+    const papers = el('papers');
+    const provideList = el('provideList');
+    const kit = el('kit');
+    const samples = el('samples');
+
+    const crew2 = el('crew2');
+    const crew6 = el('crew6');
+
+    // Reset/print
+    el('reset').addEventListener('click', () => {
+      t2_main.checked = false; t2_addon.checked = false; t2_grad.checked = false;
+      t3_drought.checked = false; t3_common.checked = false; t3_ncycle.checked = false;
+      crew6.checked = true; update(); window.scrollTo({top:0, behavior:'smooth'});
+    });
+    el('print').addEventListener('click', () => window.print());
+
+    function updateGradBadge(){ gradBadge.textContent = t2_main.checked ? '+8 plots' : '+10 plots'; }
+    function li(text){ const n = document.createElement('li'); n.textContent = text; return n; }
+    function pushLine(listEl, label, pd){ const crew = crew6.checked ? 5 : 2; const days = daysForCrew(pd, crew).toFixed(1); listEl.appendChild(li(`${label}: ${days} days`)); return +days; }
+
+    function update(){
+      updateGradBadge();
+
+      // Selected tiers
+      const chosen = ['Tier 1'];
+      if (t2_main.checked || t2_grad.checked) chosen.push('Tier 2');
+      if (t3_drought.checked || t3_common.checked || t3_ncycle.checked) chosen.push('Tier 3');
+      selTiers.textContent = chosen.join(', ');
+
+      // Tier 2 plots
+      const plots = calcTier2Plots({ dr: t2_main.checked, addon: t2_addon.checked, grad: t2_grad.checked });
+      totalPlots.textContent = String(plots);
+
+      // Time list
+      timeList.innerHTML = '';
+      let total = 0;
+      total += pushLine(timeList, 'Tier 1 - all sampling', DATA.tiers.t1.effort_person_days);
+
+      if (t2_main.checked || t2_grad.checked){
+        let t2Initial = DATA.tiers.t2.effort_person_days_initial;
+        const addFactor = Math.max(0, plots - 16) / 8 * 0.10; // crude scaling
+        t2Initial *= (1 + addFactor);
+        total += pushLine(timeList, 'Tier 2 - setup (initial visit)', t2Initial);
+      }
+      if (t3_common.checked){ total += pushLine(timeList, 'Tier 3 - common garden setup (scheduled with PI team)', DATA.tiers.t3.common.setup_person_days); }
+
+      if (t2_main.checked || t2_grad.checked || t3_drought.checked){ timeList.appendChild(Object.assign(document.createElement('hr'),{className:'divider'})); }
+
+      if (t2_main.checked || t2_grad.checked){
+        const revisit = DATA.tiers.t2.effort_person_days_initial * DATA.tiers.t2.revisit_fraction;
+        total += pushLine(timeList, 'Tier 2 - return visit 1', revisit);
+        total += pushLine(timeList, 'Tier 2 - return visit 2', revisit);
+      }
+      if (t3_drought.checked){
+        total += pushLine(timeList, 'Tier 3 - drought visit 1', DATA.tiers.t3.drought.effort_per_visit_person_days);
+        total += pushLine(timeList, 'Tier 3 - drought visit 2', DATA.tiers.t3.drought.effort_per_visit_person_days);
+      }
+
+      timeList.appendChild(Object.assign(document.createElement('hr'),{className:'divider'}));
+      timeList.appendChild(li(`Total: ${total.toFixed(1)} days`));
+
+      // Papers
+      papers.innerHTML = '';
+      DATA.tiers.t1.papers.forEach(p => papers.appendChild(li(p)));
+      if (t2_main.checked || t2_grad.checked) DATA.tiers.t2.papers.forEach(p => papers.appendChild(li(p)));
+      if (t3_drought.checked || t3_common.checked || t3_ncycle.checked) DATA.tiers.t3.papers.forEach(p => papers.appendChild(li(p)));
+
+      // Supplies you provide
+      provideList.innerHTML = '';
+      DATA.tiers.t1.provide_list.forEach(x => {
+        if (Array.isArray(x)) { const hdr=document.createElement('li'); hdr.innerHTML = `<strong>${x[0]}</strong>`; provideList.appendChild(hdr);} else { provideList.appendChild(li(x)); }
+      });
+      if (t2_main.checked || t2_grad.checked){
+        DATA.tiers.t2.provide_additions.forEach(x => {
+          if (Array.isArray(x)) { const hdr=document.createElement('li'); hdr.innerHTML = `<strong>${x[0]}</strong>`; provideList.appendChild(hdr);} else { provideList.appendChild(li(x)); }
+        });
+      }
+
+      // Kit
+      kit.innerHTML = '';
+      DATA.tiers.t1.kit.forEach(x => kit.appendChild(li(x)));
+
+      // Samples
+      samples.innerHTML = '';
+      DATA.tiers.t1.samples.forEach(x => samples.appendChild(li(x)));
+      if (t2_main.checked || t2_grad.checked){ DATA.tiers.t2.samples_per_full_component.forEach(x => samples.appendChild(li(x))); }
+      if (t3_ncycle.checked){ samples.appendChild(li(DATA.tiers.t3.ncycle.samples)); }
+
+      // Enforce add-on rule
+      t2_addon.disabled = !t2_main.checked;
+    }
+
+    [t2_main,t2_addon,t2_grad,t3_drought,t3_common,t3_ncycle,crew2,crew6].forEach(c => c.addEventListener('change', update));
+    update();
+  </script>
+</body>
+</html>
