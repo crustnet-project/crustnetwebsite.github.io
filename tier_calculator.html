@@ -31,7 +31,7 @@
 
     /* Layout */
     #onboarding .wrap { max-width: 1100px; margin: 0 auto; padding: 14px 18px; }
-    #onboarding main { max-width: 1100px; margin: 0 auto; padding: 18px; display: grid; gap: 18px; grid-template-columns: 1.1fr 1fr; }
+    #onboarding main { max-width: 1100px; margin: 0 auto; padding: 18px; display: grid; gap: 18px; grid-template-columns: 0.7fr 1fr; }
     @media (max-width: 980px){ #onboarding main{ grid-template-columns: 1fr; } }
 
     /* Header (uses site sand color) */
@@ -59,7 +59,7 @@
     /* Lists & text */
     #onboarding p{ margin:8px 0; }
     #onboarding ul, #onboarding ol{ margin:6px 0 0 18px; padding:0; }
-    #onboarding li{ margin:4px 0; }
+    #onboarding li{ margin:4px 0; font-size: 12px; }
     #onboarding .small{ font-size:13px; }
     #onboarding .divider{ border:0; border-top:1px solid var(--cn-border); margin:10px 0; }
 
@@ -75,7 +75,7 @@
     <header>
       <div class="wrap">
         <h1>CrustNet Tier Calculator</h1>
-        <div class="muted small">Pick your tiers and options on the left. The right side reports how it will affect your CrustNet work.</div>
+        <div class="muted small">Pick your tiers and options using the checkboxes on the left. The right side reports how it will affect your participation in CrustNet.</div>
       </div>
     </header>
 
@@ -151,7 +151,8 @@
             <div class="kvs">
               <div class="kv"><div class="k">Selected tiers</div><div class="v" id="selTiers">Tier 1</div></div>
               <div class="kv"><div class="k">Tier 1 footprint</div><div class="v">1 ha area: 10 plots, 3 transects</div></div>
-              <div class="kv"><div class="k">Tier 2 plots</div><div class="v" id="totalPlots">0</div></div>
+              <div class="kv"><div class="k">Tier 2 plots (remain on site)</div><div class="v" id="totalPlots">0</div></div>
+              <div class="kv"><div class="k">Tier 3 plots (remain on site)</div><div class="v" id="tier3Summary">—</div></div>
             </div>
           </div>
 
@@ -161,7 +162,7 @@
           <!-- Time by visit (single list) -->
           <div class="card" id="time">
                 <div class="controls-inline" id="crewbox">
-          <span class="pill"><input type="radio" name="crew" id="crew6" checked> <label for="crew6">Crew of 6</label></span>
+          <span class="pill"><input type="radio" name="crew" id="crew6" checked> <label for="crew6">Crew of 5-7</label></span>
           <span class="pill"><input type="radio" name="crew" id="crew2"> <label for="crew2">Crew of 2</label></span>
             </div>
         <h3>Estimated time by visit</h3>
@@ -207,7 +208,7 @@
             'Co-authorship on a CrustNet data paper'
           ],
           provide_list: [
-            ['— Tier 1 base —'],
+            ['— Tier 1 — (we can help with some of these if requested)'],
             'Printed datasheets and protocol',
             'Clipboard; pencils, pens, sharpies',
             'GPS, clinometer, compass',
@@ -231,13 +232,13 @@
             'Paper bags; toilet paper/paper towels for vouchers'
           ],
           kit: [
+            'N-fixation tubes and stoppers',
             "Jeweler's chain",
-            'N-fix tubes',
-            'Photo balance cards',
-            'Infiltrometer ring',
             'Soil aggregate stability kit',
-            'RNAlater',
-            '5 mL tubes for DNA/RNA subsamples'
+            'Margin trowel',
+            'Infiltrometer ring',
+            'RNALater',
+            'Photo balance cards'
           ],
           samples: [
             '1 surface composite sample in a ziploc',
@@ -249,34 +250,47 @@
             '~75 trait specimens in tupperware + tissue'
           ]
         },
-        t2: {
-          label: 'Tier 2',
-          effort_person_days_initial: 16.5, // 5.5 people x 3 days
-          revisit_fraction: 0.30, // each revisit as fraction of initial
-          papers: [
-            'Co-authorship on 4-5 core Tier 2 papers (2 co-authors per contributing group)'
-          ],
-          provide_additions: [
-            ['— Tier 2 additions —'],
-            'Sledgehammer (for plot installation)',
-            'Additional N-fix tubes per added plots',
-            'Extra RNAlater and 5 mL tubes',
-            'Extra ziplocs for plot scrapes'
-          ],
-          samples_per_full_component: [
-            '40 scraped surface 0-1 cm samples (120 g each) in plastic bags',
-            '40 RNAlater subsamples in 5 mL tubes',
-            '40 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'
-          ]
+      t2: {
+        label: 'Tier 2',
+        // explicit, fixed person-days per component (no plot scaling)
+        components: {
+          dr:        { initial_pd: 10, revisit_pd: 5 }, // Disturbance-Recovery
+          dr_addon:  { initial_pd: 5,  revisit_pd: 2.5 }, // Optional add-on for D-R
+          grad:      { initial_pd: 5,  revisit_pd: 2.5 }  // Disturbance Gradient
         },
-        t3: {
-          label: 'Tier 3',
-          drought: { effort_per_visit_person_days: 1, extra_visits: 2 }, // 0.5 day x 2 people
-          common: { setup_person_days: 6, note: 'Requires coordination with PI team' },
-          ncycle: { samples: 'Up to 48 petri-dish samples per site (no return visits needed)' },
-          papers: [ 'Co-authorship on 2 core Tier 3 papers (2 co-authors per contributing group)' ]
-        }
+        papers: [
+          'Co-authorship on 4-5 core Tier 2 papers (2 co-authors per contributing group)'
+        ],
+        // supplies (unchanged from your latest)
+        provide_additions_base: [
+          ['— Tier 2 additions —'],
+          'Permanent plot markers (e.g., aluminum tags on landscaping staples or 6" nails)',
+          '3 lb. sledgehammer'
+        ],
+        provide_additions_addon: [
+          ['— D-R optional add-on (extra) —'],
+          'Bucket or tub to collect inoculum',
+          '1 x 1 cm grid or screen to homogenize inoculum',
+          'Measuring cup to inoculate the right amount on each plot'
+        ],
+        samples_per_full_component: [
+          '40 scraped surface 0-1 cm samples (120 g each) in plastic bags',
+          '40 RNAlater subsamples in 5 mL tubes',
+          '40 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'
+        ]
+      },
+
+      t3: {
+        label: 'Tier 3',
+        // explicit, fixed person-days per component
+        components: {
+          drought: { initial_pd: 2.5, revisit_pd: 1 },
+          common:  { initial_pd: 10, revisit_pd: 2.5 },
+          ncycle:  { initial_pd: 1, revisit_pd: 0 } // “none” modeled as 0
+        },
+        papers: [ 'Co-authorship on 2 core Tier 3 papers (2 co-authors per contributing group)' ]
       }
+    }
     };
 
     // Tier 2 plot math
@@ -302,6 +316,9 @@
     const gradBadge = el('grad-plots-badge');
     const selTiers = el('selTiers');
     const totalPlots = el('totalPlots');
+
+
+
 
     const timeList = el('timeList');
     const papers = el('papers');
@@ -337,33 +354,87 @@
       const plots = calcTier2Plots({ dr: t2_main.checked, addon: t2_addon.checked, grad: t2_grad.checked });
       totalPlots.textContent = String(plots);
 
-      // Time list
+      // Tier 3 summary line
+      const tier3El = document.getElementById('tier3Summary');
+      if (tier3El) {
+        const bits = [];
+        if (t3_drought.checked) bits.push('6 drought shelters');
+        if (t3_common.checked)  bits.push('common garden');
+        tier3El.textContent = bits.length ? bits.join(', ') : '—';
+      }
+
+
+
+      // Time list (grouped by visits) — drought folded into Visits 2 & 3; bold subtotals/total
       timeList.innerHTML = '';
       let total = 0;
-      total += pushLine(timeList, 'Tier 1 - all sampling', DATA.tiers.t1.effort_person_days);
 
-      if (t2_main.checked || t2_grad.checked){
-        let t2Initial = DATA.tiers.t2.effort_person_days_initial;
-        const addFactor = Math.max(0, plots - 16) / 8 * 0.10; // crude scaling
-        t2Initial *= (1 + addFactor);
-        total += pushLine(timeList, 'Tier 2 - setup (initial visit)', t2Initial);
+      const addHeading = (txt) => {
+        const h = document.createElement('li');
+        h.innerHTML = `<strong>${txt}</strong>`;
+        timeList.appendChild(h);
+      };
+      const addDivider = () =>
+        timeList.appendChild(Object.assign(document.createElement('hr'), { className: 'divider' }));
+      const addStrongLine = (txt) => {
+        const n = document.createElement('li');
+        n.innerHTML = `<strong>${txt}</strong>`;
+        timeList.appendChild(n);
+      };
+
+      const t2 = DATA.tiers.t2.components;
+      const t3 = DATA.tiers.t3.components;
+
+      // Visit 1
+      addHeading('Visit 1');
+      let v1 = 0;
+      v1 += pushLine(timeList, 'Tier 1', DATA.tiers.t1.effort_person_days);
+      if (t2_main.checked)   v1 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (initial)', t2.dr.initial_pd);
+      if (t2_addon.checked)  v1 += pushLine(timeList, 'Tier 2 — D-R add-on (initial)', t2.dr_addon.initial_pd);
+      if (t2_grad.checked)   v1 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (initial)', t2.grad.initial_pd);
+      if (t3_common.checked) v1 += pushLine(timeList, 'Tier 3 — Common garden (initial)', t3.common.initial_pd);
+      if (t3_ncycle.checked) v1 += pushLine(timeList, 'Tier 3 — N-cycling & spectral (initial)', t3.ncycle.initial_pd);
+      if (t3_drought.checked) v1 += pushLine(timeList, 'Tier 3 — Drought (setup)', t3.drought.initial_pd);
+      addStrongLine(`Subtotal (Visit 1): ${v1.toFixed(1)} days`);
+      addDivider();
+      total += v1;
+
+      // Visit 2
+      if (t2_main.checked || t2_addon.checked || t2_grad.checked || t3_common.checked || t3_drought.checked) {
+        addHeading('Visit 2 (after 1 year)');
+        let v2 = 0;
+        if (t2_main.checked)   v2 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (subsequent)', t2.dr.revisit_pd);
+        if (t2_addon.checked)  v2 += pushLine(timeList, 'Tier 2 — D-R add-on (subsequent)', t2.dr_addon.revisit_pd);
+        if (t2_grad.checked)   v2 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
+        if (t3_common.checked) v2 += pushLine(timeList, 'Tier 3 — Common garden (subsequent)', t3.common.revisit_pd);
+        if (t3_drought.checked) v2 += pushLine(timeList, 'Tier 3 — Drought (visit 1)', t3.drought.revisit_pd);
+        addStrongLine(`Subtotal (Visit 2): ${v2.toFixed(1)} days`);
+        addDivider();
+        total += v2;
       }
-      if (t3_common.checked){ total += pushLine(timeList, 'Tier 3 - common garden setup (scheduled with PI team)', DATA.tiers.t3.common.setup_person_days); }
 
-      if (t2_main.checked || t2_grad.checked || t3_drought.checked){ timeList.appendChild(Object.assign(document.createElement('hr'),{className:'divider'})); }
-
-      if (t2_main.checked || t2_grad.checked){
-        const revisit = DATA.tiers.t2.effort_person_days_initial * DATA.tiers.t2.revisit_fraction;
-        total += pushLine(timeList, 'Tier 2 - return visit 1', revisit);
-        total += pushLine(timeList, 'Tier 2 - return visit 2', revisit);
+      // Visit 3
+      if (t2_main.checked || t2_addon.checked || t2_grad.checked || t3_common.checked || t3_drought.checked) {
+        addHeading('Visit 3 (after 2 years)');
+        let v3 = 0;
+        if (t2_main.checked)   v3 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (subsequent)', t2.dr.revisit_pd);
+        if (t2_addon.checked)  v3 += pushLine(timeList, 'Tier 2 — D-R add-on (subsequent)', t2.dr_addon.revisit_pd);
+        if (t2_grad.checked)   v3 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
+        if (t3_common.checked) v3 += pushLine(timeList, 'Tier 3 — Common garden (subsequent)', t3.common.revisit_pd);
+        if (t3_drought.checked) v3 += pushLine(timeList, 'Tier 3 — Drought (visit 2)', t3.drought.revisit_pd);
+        addStrongLine(`Subtotal (Visit 3): ${v3.toFixed(1)} days`);
+        addDivider();
+        total += v3;
       }
-      if (t3_drought.checked){
-        total += pushLine(timeList, 'Tier 3 - drought visit 1', DATA.tiers.t3.drought.effort_per_visit_person_days);
-        total += pushLine(timeList, 'Tier 3 - drought visit 2', DATA.tiers.t3.drought.effort_per_visit_person_days);
-      }
 
-      timeList.appendChild(Object.assign(document.createElement('hr'),{className:'divider'}));
-      timeList.appendChild(li(`Total: ${total.toFixed(1)} days`));
+      // Grand total
+      addStrongLine(`Total: ${total.toFixed(1)} days`);
+
+
+
+
+
+      
 
       // Papers
       papers.innerHTML = '';
@@ -374,13 +445,41 @@
       // Supplies you provide
       provideList.innerHTML = '';
       DATA.tiers.t1.provide_list.forEach(x => {
-        if (Array.isArray(x)) { const hdr=document.createElement('li'); hdr.innerHTML = `<strong>${x[0]}</strong>`; provideList.appendChild(hdr);} else { provideList.appendChild(li(x)); }
+        if (Array.isArray(x)) {
+          const hdr = document.createElement('li');
+          hdr.innerHTML = `<strong>${x[0]}</strong>`;
+          provideList.appendChild(hdr);
+        } else {
+          provideList.appendChild(li(x));
+        }
       });
-      if (t2_main.checked || t2_grad.checked){
-        DATA.tiers.t2.provide_additions.forEach(x => {
-          if (Array.isArray(x)) { const hdr=document.createElement('li'); hdr.innerHTML = `<strong>${x[0]}</strong>`; provideList.appendChild(hdr);} else { provideList.appendChild(li(x)); }
+
+      // Tier 2 base additions if any Tier 2 component selected
+      if (t2_main.checked || t2_grad.checked) {
+        DATA.tiers.t2.provide_additions_base.forEach(x => {
+          if (Array.isArray(x)) {
+            const hdr = document.createElement('li');
+            hdr.innerHTML = `<strong>${x[0]}</strong>`;
+            provideList.appendChild(hdr);
+          } else {
+            provideList.appendChild(li(x));
+          }
         });
+
+        // Add-on extras only when the add-on checkbox is selected
+        if (t2_addon.checked) {
+          DATA.tiers.t2.provide_additions_addon.forEach(x => {
+            if (Array.isArray(x)) {
+              const hdr = document.createElement('li');
+              hdr.innerHTML = `<strong>${x[0]}</strong>`;
+              provideList.appendChild(hdr);
+            } else {
+              provideList.appendChild(li(x));
+            }
+          });
+        }
       }
+
 
       // Kit
       kit.innerHTML = '';
@@ -394,6 +493,8 @@
 
       // Enforce add-on rule
       t2_addon.disabled = !t2_main.checked;
+      if (!t2_main.checked) t2_addon.checked = false;
+
     }
 
     [t2_main,t2_addon,t2_grad,t3_drought,t3_common,t3_ncycle,crew2,crew6].forEach(c => c.addEventListener('change', update));
