@@ -75,7 +75,10 @@
     <header>
       <div class="wrap">
         <h1>CrustNet Tier Calculator</h1>
-        <div class="muted small">Pick your tiers and options using the checkboxes on the left. The right side reports how it will affect your participation in CrustNet.</div>
+        <div class="muted small">Pick your tiers and options using the checkboxes on the left. 
+          The right side reports how it will affect your participation in CrustNet.
+          <br>This calculator should reflect the protocol, but in case of differences, defer to the protocol.
+</div>
       </div>
     </header>
 
@@ -89,8 +92,15 @@
           <fieldset>
             <legend>Tier 1 (one-time survey) <span class="badge">mandatory</span></legend>
             <label class="opt" aria-disabled="true"><input type="checkbox" id="t1" checked disabled /> <div>
-              <div><strong>Include Tier 1</strong> — <span class="muted">fixed at 10 plots and 3 transects</span></div>
-              <div class="small muted">Effort: 5-6 people, ~2 days total, one visit.</div>
+              <div><strong>Include Tier 1</strong> — <span class="muted">10 plots and 3 transects</span></div>
+              <div class="small muted">Effort: 5-7 people, ~2 days total, one visit.</div>
+              <ul class="small muted" style="margin-top:6px">
+                <li>LPI transects for plants and biocrusts (three, each 30 meters)</li>
+                <li>Plant–biocrust cooccurrence quadrats (10 per transect, each 0.25 x 0.25 meters)</li>
+                <li>Biodiversity survey (one 40-minute survey)</li>
+                <li>Structure–function plots (10 plots, each 0.25 x 0.25 meters)</li>
+                <li>Collections for the trait database (up to 15 samples of the 5 most dominant moss/lichen species on site)</li>
+              </ul>
             </div></label>
           </fieldset>
 
@@ -99,17 +109,28 @@
             <legend>Tier 2 (simple experiments + monitoring)</legend>
             <label class="opt"><input type="checkbox" id="t2_main" /> <div>
               <div><strong>Disturbance-Recovery experiment</strong> <span class="badge">+16 plots</span></div>
-              <div class="small muted">Adds monitoring visits. 3-year commitment.</div>
+              <div class="small muted">Effort: 5-7 people, ~1 day setup + repeat sampling.</div>
+              <ul class="small muted" style="margin-top:6px">
+                <li>Full sledgehammer disturbance treatment with monitoring of recovery</li>
+                <li>Adds monitoring visits. 3-year commitment.</li>
+              </ul>
             </div></label>
 
             <label class="opt"><input type="checkbox" id="t2_addon" /> <div>
-              <div><strong>Optional add-on for Disturbance-Recovery</strong> <span class="badge">+8 plots</span></div>
+              <div><strong>Optional inoculum add-on for D-R</strong> <span class="badge">+8 plots</span></div>
+              <div class="small muted">Effort: 5-7 people, ~1 day setup + repeat sampling.</div>
               <div class="small muted">Only available if Disturbance-Recovery is selected.</div>
             </div></label>
 
             <label class="opt"><input type="checkbox" id="t2_grad" /> <div>
               <div><strong>Disturbance Gradient experiment</strong> <span class="badge" id="grad-plots-badge">+10 plots</span></div>
-              <div class="small muted">If D-R is also selected, this becomes +8 plots.</div>
+              <div class="small muted">Effort: 5-7 people, ~2 days setup + repeat sampling.</div>
+              <ul class="small muted" style="margin-top:6px">
+                <li>Repeated sledgehammer disturbance treatment at varying levels</li>
+                <li>Adds monitoring visits. 3-year commitment.</li>
+                <li>If D-R is also selected, this becomes +8 plots.</li>
+              </ul>
+
             </div></label>
           </fieldset>
 
@@ -118,17 +139,18 @@
             <legend>Tier 3 (infrastructure and optional components)</legend>
             <label class="opt"><input type="checkbox" id="t3_drought" /> <div>
               <div><strong>Drought component</strong></div>
-              <div class="small muted">0.5 day x 2 people per extra visit; two extra visits over 3 years; equipment ~ $1000.</div>
+              <div class="small muted">Install drought shelters and sample over 3 years; equipment ~ $1000.</div>
             </div></label>
 
             <label class="opt"><input type="checkbox" id="t3_common" /> <div>
               <div><strong>Common garden component</strong></div>
-              <div class="small muted">Coordination with PI team required. Not required for all participants.</div>
+              <div class="small muted">Coordination with PI team required.</div>
             </div></label>
 
             <label class="opt"><input type="checkbox" id="t3_ncycle" /> <div>
-              <div><strong>N-cycling & spectral reflectance of biocrust types</strong> <span class="badge">no return visits</span></div>
-              <div class="small muted">Can be completed with Tier 1. Generates up to 48 petri-dish samples per site.</div>
+              <div><strong>Spectral reflectance of biocrust (optional))</strong> <span class="badge">no return visits</span></div>
+              <div class="small muted">Can be completed with Tier 1. Generates up to 48 petri-dish samples per site. 
+                There is an N cycling component to this part as well.</div>
             </div></label>
           </fieldset>
 
@@ -151,8 +173,8 @@
             <div class="kvs">
               <div class="kv"><div class="k">Selected tiers</div><div class="v" id="selTiers">Tier 1</div></div>
               <div class="kv"><div class="k">Tier 1 footprint</div><div class="v">1 ha area: 10 plots, 3 transects</div></div>
-              <div class="kv"><div class="k">Tier 2 plots (remain on site)</div><div class="v" id="totalPlots">0</div></div>
-              <div class="kv"><div class="k">Tier 3 plots (remain on site)</div><div class="v" id="tier3Summary">—</div></div>
+              <div class="kv"><div class="k">Tier 2 plots (remain at site 3 years)</div><div class="v" id="totalPlots">0</div></div>
+              <div class="kv"><div class="k">Tier 3 plots (remain at site 3 years)</div><div class="v" id="tier3Summary">—</div></div>
             </div>
           </div>
 
@@ -180,7 +202,7 @@
           </div>
 
           <div class="card">
-            <h3>Supplies shipped to you in the kit</h3>
+            <h3>Supplies shipped to you in kit</h3>
             <ul id="kit"></ul>
           </div>
 
@@ -210,42 +232,37 @@
           provide_list: [
             ['— Tier 1 — (we can help with some of these if requested)'],
             'Printed datasheets and protocol',
-            'Clipboard; pencils, pens, sharpies',
-            'GPS, clinometer, compass',
             'Biocrust ID and plant ID guides',
-            'Transect tape (>30 m) with metal stake',
-            'Aluminum tags (2 per plot), staples (4 per plot)',
-            'Large quadrat (constructed)',
-            'Small quadrat (constructed)',
-            '25-point cover frame (constructed)',
-            'Mallet (for infiltration ring)',
-            'Pin flags; knee pads',
-            'Photos ruler (0.35 m or 0.7 m); umbrella; white board; dry erase marker',
-            'Photo balance cards',
+            'Clipboard; pencils, pens, sharpies',
             'Small and medium rulers (cm)',
-            'Roughness chain with known length',
-            'Aggregate stability kit and small ped sampler (record box ID and position)',
-            'Infiltration metal ring, wood block, water bottle marked at 100 mL, Saran wrap, timer',
-            'Soil margin trowel marked at 1 and 5 cm; 50 mL tube marked at 5 cm',
-            'Ziploc bags; sharpie',
-            'Molecular tubes; labels; transfer spoon; ethanol or isopropanol',
-            'Paper bags; toilet paper/paper towels for vouchers'
+            'GPS, clinometer, compass',
+            'Transect tape (>30 m) with metal stake',
+            'Aluminum tags (2 per plot), staples (4 per plot), pin flags (~30)',
+            'Rubber mallet, wood block, water bottle marked at 100 mL, Saran wrap, timer (for infiltration)',
+            'Photos: camera; ruler (0.35 m or 0.7 m); umbrella; white board; dry erase marker',
+            'Sampling device for 1-5 cm samples (e.g., 50 mL tube)',
+            'Ziploc bags for soil samples',
+            '5 mL Molecular tubes; labels; transfer spoon; ethanol or isopropanol',
+            'Paper bags; toilet paper/paper towels for vouchers',
+            'Large quadrat (build from PVC or similar)',
+            'Small quadrat (build from PVC or similar)',
+            '25-point cover frame (build from PVC and wire or similar)'
           ],
           kit: [
-            'N-fixation tubes and stoppers',
-            "Jeweler's chain",
+            'N-fixation sampling tubes and stoppers',
+            "Jeweler's chain for surface roughness (20 cm)",
             'Soil aggregate stability kit',
-            'Margin trowel',
-            'Infiltrometer ring',
-            'RNALater',
+            'Margin trowel for surface biocrust soil samples',
+            'Infiltrometer ring (metal)',
+            'RNALater (liquid reagent)',
             'Photo balance cards'
           ],
           samples: [
             '1 surface composite sample in a ziploc',
             '1 subsurface composite sample in a ziploc',
             '20 N-fix cores (2 per S-F plot) in N-fix tubes',
-            '10 scraped surface 0-1 cm samples (120 g each) in ziplocs',
-            '10 subsurface 1-5 cm samples (120 g each) in ziplocs',
+            '10 scraped surface 0-1 cm samples (120 g each) in plastic bags',
+            '10 subsurface 1-5 cm samples (120 g each) in plastic bags',
             '12 RNAlater subsamples (one per S-F surface scrape + both composites) in 5 mL tubes',
             '~75 trait specimens in tupperware + tissue'
           ]
@@ -254,9 +271,9 @@
         label: 'Tier 2',
         // explicit, fixed person-days per component (no plot scaling)
         components: {
-          dr:        { initial_pd: 10, revisit_pd: 5 }, // Disturbance-Recovery
+          dr:        { initial_pd: 5, revisit_pd: 2.5 }, // Disturbance-Recovery
           dr_addon:  { initial_pd: 5,  revisit_pd: 2.5 }, // Optional add-on for D-R
-          grad:      { initial_pd: 5,  revisit_pd: 2.5 }  // Disturbance Gradient
+          grad:      { initial_pd: 10,  revisit_pd: 5 }  // Disturbance Gradient
         },
         papers: [
           'Co-authorship on 4-5 core Tier 2 papers (2 co-authors per contributing group)'
@@ -268,13 +285,14 @@
           '3 lb. sledgehammer'
         ],
         provide_additions_addon: [
-          ['— D-R optional add-on (extra) —'],
+          ['— Disturbance-Recovery optional add-on (extra) —'],
           'Bucket or tub to collect inoculum',
           '1 x 1 cm grid or screen to homogenize inoculum',
           'Measuring cup to inoculate the right amount on each plot'
         ],
         samples_per_full_component: [
           '40 scraped surface 0-1 cm samples (120 g each) in plastic bags',
+          '40 cored subsurface 1-5 cm samples (120 g each) in plastic bags',
           '40 RNAlater subsamples in 5 mL tubes',
           '40 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'
         ]
@@ -353,6 +371,19 @@
       // Tier 2 plots
       const plots = calcTier2Plots({ dr: t2_main.checked, addon: t2_addon.checked, grad: t2_grad.checked });
       totalPlots.textContent = String(plots);
+
+      // --- Tier 2 component plots ---
+      const drPlots   = t2_main.checked ? 16 : 0;
+      const addPlots  = (t2_main.checked && t2_addon.checked) ? 8 : 0;
+      const gradPlots = t2_grad.checked ? (t2_main.checked ? 8 : 10) : 0;
+
+      // --- Tier 2 sample math ---
+      // DR & add-on: 1 sample per plot; Gradient: 2 samples per plot
+      const t2_scraped     = drPlots + addPlots + (gradPlots * 2);
+      const t2_subsurface  = t2_scraped;        // same count pattern
+      const t2_rnalater    = t2_scraped;        // one per scraped sample
+      const t2_nfix_cores = t2_grad.checked ? 40 : 0;
+
 
       // Tier 3 summary line
       const tier3El = document.getElementById('tier3Summary');
@@ -439,8 +470,23 @@
       // Papers
       papers.innerHTML = '';
       DATA.tiers.t1.papers.forEach(p => papers.appendChild(li(p)));
-      if (t2_main.checked || t2_grad.checked) DATA.tiers.t2.papers.forEach(p => papers.appendChild(li(p)));
-      if (t3_drought.checked || t3_common.checked || t3_ncycle.checked) DATA.tiers.t3.papers.forEach(p => papers.appendChild(li(p)));
+
+      // Tier 2: starts at 2–3, +1 to both ends for each of add-on/gradient
+      if (t2_main.checked || t2_addon.checked || t2_grad.checked) {
+        const extras = (t2_addon.checked ? 1 : 0) + (t2_grad.checked ? 1 : 0);
+        const minP = 2 + extras, maxP = 3 + extras;
+        papers.appendChild(li(`Co-authorship on ${minP}–${maxP} core Tier 2 papers (2 co-authors per contributing group)`));
+      }
+
+      // Tier 3: separate component papers
+      if (t3_drought.checked) {
+        papers.appendChild(li('Co-authorship on drought component paper (2 co-authors per contributing group)'));
+      }
+      if (t3_common.checked) {
+        papers.appendChild(li('Co-authorship on common garden component paper (2 co-authors per contributing group)'));
+      }
+      // N-cycling/spectral adds no papers by itself
+
 
       // Supplies you provide
       provideList.innerHTML = '';
@@ -478,6 +524,11 @@
             }
           });
         }
+        // Tier 3 drought supplies (only when drought is selected)
+        if (t3_drought.checked) {
+          provideList.appendChild(li('3 drought shelters (constructed from instructions in protocol)'));
+          provideList.appendChild(li('2–6× soil moisture sensors and a datalogger'));
+        }
       }
 
 
@@ -485,11 +536,46 @@
       kit.innerHTML = '';
       DATA.tiers.t1.kit.forEach(x => kit.appendChild(li(x)));
 
-      // Samples
-      samples.innerHTML = '';
-      DATA.tiers.t1.samples.forEach(x => samples.appendChild(li(x)));
-      if (t2_main.checked || t2_grad.checked){ DATA.tiers.t2.samples_per_full_component.forEach(x => samples.appendChild(li(x))); }
-      if (t3_ncycle.checked){ samples.appendChild(li(DATA.tiers.t3.ncycle.samples)); }
+    // Samples
+    samples.innerHTML = '';
+
+    const addHeader = (text) => {
+      const h = document.createElement('li');
+      h.innerHTML = `<strong>${text}</strong>`;
+      samples.appendChild(h);
+    };
+
+    // Tier 1
+    addHeader('Tier 1');
+    DATA.tiers.t1.samples.forEach(x => samples.appendChild(li(x)));
+
+    // Tier 2 (only if any Tier 2 component is selected)
+    if (t2_main.checked || t2_addon.checked || t2_grad.checked) {
+      addHeader('Tier 2');
+      if (t2_scraped > 0) {
+        samples.appendChild(li(`${t2_scraped} scraped surface 0–1 cm samples (120 g each) in plastic bags`));
+        samples.appendChild(li(`${t2_subsurface} cored subsurface 1–5 cm samples (120 g each) in plastic bags`));
+        samples.appendChild(li(`${t2_rnalater} RNAlater subsamples in 5 mL tubes`));
+      }
+      if (t2_nfix_cores > 0) {
+        samples.appendChild(li(`${t2_nfix_cores} N-fix cores (4 per disturbance-gradient plot) in N-fix tubes`));
+      }
+    }
+
+    // Tier 3 (adds its own samples)
+    if (t3_drought.checked) {
+      addHeader('Tier 3 (drought)');
+      samples.appendChild(li('6 scraped surface 0–1 cm samples (120 g each) in plastic bags'));
+      samples.appendChild(li('6 cored subsurface 1–5 cm samples (120 g each) in plastic bags'));
+      samples.appendChild(li('6 RNAlater subsamples in 5 mL tubes'));
+      samples.appendChild(li('6 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'));
+    }
+
+    if (t3_ncycle.checked) {
+      addHeader('Optional: (N-cycling & spectral)');
+      samples.appendChild(li('48 petri dishes for spectral & N-cycling measurements'));
+    }
+
 
       // Enforce add-on rule
       t2_addon.disabled = !t2_main.checked;
