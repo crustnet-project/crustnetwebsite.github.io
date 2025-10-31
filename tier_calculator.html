@@ -92,7 +92,7 @@
           <fieldset>
             <legend>Tier 1 (one-time survey) <span class="badge">mandatory</span></legend>
             <label class="opt" aria-disabled="true"><input type="checkbox" id="t1" checked disabled /> <div>
-              <div><strong>Include Tier 1</strong> — <span class="muted">10 plots and 3 transects</span></div>
+              <div><strong>Tier 1</strong> — <span class="muted">10 plots and 3 transects</span></div>
               <div class="small muted">Effort: 5-7 people, ~2 days total, one visit.</div>
               <ul class="small muted" style="margin-top:6px">
                 <li>LPI transects for plants and biocrusts (three, each 30 meters)</li>
@@ -144,19 +144,17 @@
 
             <label class="opt"><input type="checkbox" id="t3_common" /> <div>
               <div><strong>Common garden component</strong></div>
-              <div class="small muted">Coordination with PI team required.</div>
+              <div class="small muted">Coordination with PI team required. More information forthcoming on this component.</div>
             </div></label>
 
             <label class="opt"><input type="checkbox" id="t3_ncycle" /> <div>
-              <div><strong>Spectral reflectance of biocrust (optional))</strong> <span class="badge">no return visits</span></div>
-              <div class="small muted">Can be completed with Tier 1. Generates up to 48 petri-dish samples per site. 
-                There is an N cycling component to this part as well.</div>
+              <div><strong>N-cycling and spectral reflectance of biocrust (optional))</strong> <span class="badge">no return visits</span></div>
+              <div class="small muted">Can be completed with Tier 1. Generates up to 48 petri-dish samples per site.</div>
             </div></label>
           </fieldset>
 
           <div class="controls-inline">
             <button id="reset">Reset</button>
-            <button id="print">Print</button>
           </div>
 
         </div>
@@ -192,7 +190,7 @@
           </div>
 
           <div class="card">
-            <h3>Papers you will be part of</h3>
+            <h3>Papers on which you will be included</h3>
             <ul id="papers"></ul>
           </div>
 
@@ -226,7 +224,7 @@
           label: 'Tier 1',
           effort_person_days: 10, // 5.5 people x 2 days mid-point
           papers: [
-            'Automatic co-authorship on 4 core Tier 1 papers (2 co-authors per group)',
+            'Co-authorship on 4 core Tier 1 papers (2 co-authors per group)',
             'Co-authorship on a CrustNet data paper'
           ],
           provide_list: [
@@ -353,8 +351,7 @@
       t3_drought.checked = false; t3_common.checked = false; t3_ncycle.checked = false;
       crew6.checked = true; update(); window.scrollTo({top:0, behavior:'smooth'});
     });
-    el('print').addEventListener('click', () => window.print());
-
+    
     function updateGradBadge(){ gradBadge.textContent = t2_main.checked ? '+8 plots' : '+10 plots'; }
     function li(text){ const n = document.createElement('li'); n.textContent = text; return n; }
     function pushLine(listEl, label, pd){ const crew = crew6.checked ? 5 : 2; const days = daysForCrew(pd, crew).toFixed(1); listEl.appendChild(li(`${label}: ${days} days`)); return +days; }
