@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="https://crustnet.org/crustnet.css" />
 
   <style>
-    /*
-      Scoped, component-first styles. Nothing global; all under #onboarding.
-      Typography defaults to Interstate (via Typekit) with robust fallbacks.
-    */
+
     #onboarding {
       --cn-font: "interstate", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
       --cn-ink: #1b1f23;
@@ -176,7 +173,6 @@
             </div>
           </div>
 
-          <!-- Crew preset placed here per your layout preference -->
 
 
           <!-- Time by visit (single list) -->
@@ -216,13 +212,13 @@
 
   <script>
     // -----------------------------
-    // Data model — tweak freely
+    // Data
     // -----------------------------
     const DATA = {
       tiers: {
         t1: {
           label: 'Tier 1',
-          effort_person_days: 10, // 5.5 people x 2 days mid-point
+          effort_person_days: 10, 
           papers: [
             'Co-authorship on 4 core Tier 1 papers (2 co-authors per group)',
             'Co-authorship on a CrustNet data paper'
@@ -267,7 +263,7 @@
         },
       t2: {
         label: 'Tier 2',
-        // explicit, fixed person-days per component (no plot scaling)
+
         components: {
           dr:        { initial_pd: 5, revisit_pd: 2.5 }, // Disturbance-Recovery
           dr_addon:  { initial_pd: 5,  revisit_pd: 2.5 }, // Optional add-on for D-R
@@ -276,7 +272,7 @@
         papers: [
           'Co-authorship on 4-5 core Tier 2 papers (2 co-authors per contributing group)'
         ],
-        // supplies (unchanged from your latest)
+        // supplies
         provide_additions_base: [
           ['— Tier 2 additions —'],
           'Permanent plot markers (e.g., aluminum tags on landscaping staples or 6" nails)',
@@ -298,7 +294,7 @@
 
       t3: {
         label: 'Tier 3',
-        // explicit, fixed person-days per component
+        // person-days per component
         components: {
           drought: { initial_pd: 2.5, revisit_pd: 1 },
           common:  { initial_pd: 10, revisit_pd: 2.5 },
@@ -393,7 +389,7 @@
 
 
 
-      // Time list (grouped by visits) — drought folded into Visits 2 & 3; bold subtotals/total
+      // Time list (grouped by visits)
       timeList.innerHTML = '';
       let total = 0;
 
