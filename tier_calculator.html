@@ -286,6 +286,7 @@
         ],
         samples_per_full_component: [
           '40 scraped surface 0-1 cm samples (120 g each) in plastic bags',
+          '40 cored subsurface 1-5 cm samples (120 g each) in plastic bags',
           '40 RNAlater subsamples in 5 mL tubes',
           '40 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'
         ]
@@ -372,7 +373,7 @@
       // --- Tier 2 sample math ---
       // DR & add-on: 1 sample per plot; Gradient: 2 samples per plot
       const t2_scraped     = drPlots + addPlots + (gradPlots * 2);
-      const t2_subsurface  = t2_scraped;        // same count pattern
+      const t2_subsurface  = 0;        // same count pattern
       const t2_rnalater    = t2_scraped;        // one per scraped sample
       const t2_nfix_cores = t2_grad.checked ? 40 : 0;
 
@@ -546,7 +547,6 @@
       addHeader('Tier 2');
       if (t2_scraped > 0) {
         samples.appendChild(li(`${t2_scraped} scraped surface 0–1 cm samples (120 g each) in plastic bags`));
-        samples.appendChild(li(`${t2_subsurface} cored subsurface 1–5 cm samples (120 g each) in plastic bags`));
         samples.appendChild(li(`${t2_rnalater} RNAlater subsamples in 5 mL tubes`));
       }
       if (t2_nfix_cores > 0) {
