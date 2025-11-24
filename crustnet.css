@@ -18,9 +18,11 @@ body {
     color: black;
 }
 
-h1 {font-family: 'interstate';
-	sans-serif; 
-	font-weight:700;}
+h1 {
+  font-family: 'interstate', sans-serif;
+  font-weight: 700;
+}
+
 
 /* Background color for top navigation */
 .topnav {
