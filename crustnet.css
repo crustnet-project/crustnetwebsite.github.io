@@ -60,13 +60,13 @@ h1 {font-family: 'interstate';
    background-attachment: fixed;
    background-position: center center;
    background-size: cover;
-   margin: 100px 0 0 0;
+   margin: 140px 0 0 0;
    padding: 20px 0 20px 0;
 }
 
 #people{
    /* width: 100%; */
-   margin: 100px 0 0 0;
+   margin: 140px 0 0 0;
    padding: 20px 0 20px 0;
    background-color: #d4cbb4;
 }
