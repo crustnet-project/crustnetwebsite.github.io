@@ -83,7 +83,7 @@ h1 {
 	background-color: rgb(230,218,202,0.8);
 	border-radius: 25px;
 	margin-top: 25px;
-	padding: 25px;
+	padding: 8px 25px 25px 25px; /* top, right, bottom, left */
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
@@ -107,7 +107,7 @@ h1 {
 .person h1 {
 	font-size: 17px;
 	line-height: 18px;
-	margin-block-start: 5px;
+	margin-block-start: 0px;
 	margin-block-end: 5px;
 }
 
