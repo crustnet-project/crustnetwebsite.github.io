@@ -68,6 +68,26 @@
   </style>
 </head>
 <body style="background:#f6f1e8;">
+
+<div id="header">
+  <img src="photos/thumbnail_crustnet_logo.png"
+       alt="crustnet_logo"
+       style="width: 400px; height: auto; display: block; margin: 20px auto;">
+
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="people.html">People</a>
+    <a href="nodes.html">Nodes</a>
+    <a class="active" href="protocols.html">Protocols</a>
+    <a href="videos.html">Videos</a>
+    <a href="FAQ.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<div style="height: 150px; background-color: #d4cbb4;"></div> <!--spacer-->
+
+
   <section id="onboarding">
     <header>
       <div class="wrap">
@@ -75,6 +95,7 @@
         <div class="muted small">Pick your tiers and options using the checkboxes on the left. 
           The right side reports how it will affect your participation in CrustNet.
           <br>This calculator should reflect the protocol, but in case of differences, defer to the protocol.
+          <br>Time estimates are best guesses but may vary substantially by site and group!
 </div>
       </div>
     </header>
@@ -90,7 +111,7 @@
             <legend>Tier 1 (one-time survey) <span class="badge">mandatory</span></legend>
             <label class="opt" aria-disabled="true"><input type="checkbox" id="t1" checked disabled /> <div>
               <div><strong>Tier 1</strong> — <span class="muted">10 plots and 3 transects</span></div>
-              <div class="small muted">Effort: 5-7 people, ~2 days total, one visit.</div>
+              <div class="small muted">Effort: 5-6 people, ~2 days total, one visit.</div>
               <ul class="small muted" style="margin-top:6px">
                 <li>LPI transects for plants and biocrusts (three, each 30 meters)</li>
                 <li>Plant–biocrust cooccurrence quadrats (10 per transect, each 0.25 x 0.25 meters)</li>
@@ -106,7 +127,7 @@
             <legend>Tier 2 (simple experiments + monitoring)</legend>
             <label class="opt"><input type="checkbox" id="t2_main" /> <div>
               <div><strong>Disturbance-Recovery experiment</strong> <span class="badge">+16 plots</span></div>
-              <div class="small muted">Effort: 5-7 people, ~1 day setup + repeat sampling.</div>
+              <div class="small muted">Effort: 5-6 people, ~1 day setup + repeat sampling.</div>
               <ul class="small muted" style="margin-top:6px">
                 <li>Full sledgehammer disturbance treatment with monitoring of recovery</li>
                 <li>Adds monitoring visits. 3-year commitment.</li>
@@ -115,13 +136,13 @@
 
             <label class="opt"><input type="checkbox" id="t2_addon" /> <div>
               <div><strong>Optional inoculum add-on for D-R</strong> <span class="badge">+8 plots</span></div>
-              <div class="small muted">Effort: 5-7 people, ~1 day setup + repeat sampling.</div>
+              <div class="small muted">Effort: 5-6 people, ~1 day setup + repeat sampling.</div>
               <div class="small muted">Only available if Disturbance-Recovery is selected.</div>
             </div></label>
 
             <label class="opt"><input type="checkbox" id="t2_grad" /> <div>
               <div><strong>Disturbance Gradient experiment</strong> <span class="badge" id="grad-plots-badge">+10 plots</span></div>
-              <div class="small muted">Effort: 5-7 people, ~2 days setup + repeat sampling.</div>
+              <div class="small muted">Effort: 5-6 people, ~2 days setup + repeat sampling.</div>
               <ul class="small muted" style="margin-top:6px">
                 <li>Repeated sledgehammer disturbance treatment at varying levels</li>
                 <li>Adds monitoring visits. 3-year commitment.</li>
@@ -178,7 +199,7 @@
           <!-- Time by visit (single list) -->
           <div class="card" id="time">
                 <div class="controls-inline" id="crewbox">
-          <span class="pill"><input type="radio" name="crew" id="crew6" checked> <label for="crew6">Crew of 5-7</label></span>
+          <span class="pill"><input type="radio" name="crew" id="crew6" checked> <label for="crew6">Crew of 5-6</label></span>
           <span class="pill"><input type="radio" name="crew" id="crew2"> <label for="crew2">Crew of 2</label></span>
             </div>
         <h3>Estimated field time by visit</h3>
@@ -419,7 +440,7 @@
       if (t3_common.checked) v1 += pushLine(timeList, 'Tier 3 — Common garden (initial)', t3.common.initial_pd);
       if (t3_ncycle.checked) v1 += pushLine(timeList, 'Tier 3 — N-cycling & spectral (initial)', t3.ncycle.initial_pd);
       if (t3_drought.checked) v1 += pushLine(timeList, 'Tier 3 — Drought (setup)', t3.drought.initial_pd);
-      addStrongLine(`Subtotal (Visit 1): ${v1.toFixed(1)} days`);
+      addStrongLine(`Subtotal (Visit 1): ~${v1.toFixed(0)} days`);
       addDivider();
       total += v1;
 
@@ -432,7 +453,7 @@
         if (t2_grad.checked)   v2 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
         if (t3_common.checked) v2 += pushLine(timeList, 'Tier 3 — Common garden (subsequent)', t3.common.revisit_pd);
         if (t3_drought.checked) v2 += pushLine(timeList, 'Tier 3 — Drought (visit 1)', t3.drought.revisit_pd);
-        addStrongLine(`Subtotal (Visit 2): ${v2.toFixed(1)} days`);
+        addStrongLine(`Subtotal (Visit 2): ~${v2.toFixed(0)} days`);
         addDivider();
         total += v2;
       }
@@ -446,13 +467,13 @@
         if (t2_grad.checked)   v3 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
         if (t3_common.checked) v3 += pushLine(timeList, 'Tier 3 — Common garden (subsequent)', t3.common.revisit_pd);
         if (t3_drought.checked) v3 += pushLine(timeList, 'Tier 3 — Drought (visit 2)', t3.drought.revisit_pd);
-        addStrongLine(`Subtotal (Visit 3): ${v3.toFixed(1)} days`);
+        addStrongLine(`Subtotal (Visit 3): ~${v3.toFixed(0)} days`);
         addDivider();
         total += v3;
       }
 
       // Grand total
-      addStrongLine(`Total: ${total.toFixed(1)} days`);
+      addStrongLine(`Total: ~${total.toFixed(0)} days`);
 
 
 
