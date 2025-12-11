@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +10,6 @@
   <link rel="stylesheet" href="https://crustnet.org/crustnet.css" />
 
   <style>
-
     #onboarding {
       --cn-font: "interstate", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
       --cn-ink: #1b1f23;
@@ -24,78 +24,219 @@
       line-height: 1.45;
       font-size: 16px;
     }
-    #onboarding .muted { color: var(--cn-muted); }
+
+    #onboarding .muted {
+      color: var(--cn-muted);
+    }
 
     /* Layout */
-    #onboarding .wrap { max-width: 1100px; margin: 0 auto; padding: 14px 18px; }
-    #onboarding main { max-width: 1100px; margin: 0 auto; padding: 18px; display: grid; gap: 18px; grid-template-columns: 0.7fr 1fr; }
-    @media (max-width: 980px){ #onboarding main{ grid-template-columns: 1fr; } }
+    #onboarding .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+    }
+
+    #onboarding main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 0.7fr 1fr;
+    }
+
+    @media (max-width: 980px) {
+      #onboarding main {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* Header (uses site sand color) */
-    #onboarding header { position: sticky; top: 0; z-index: 10; background: var(--cn-sand); color: black; border-bottom: 1px solid var(--cn-border); }
-    #onboarding h1 { font-weight: 700; font-size: 20px; margin: 0; }
+    #onboarding header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--cn-sand);
+      color: black;
+      border-bottom: 1px solid var(--cn-border);
+    }
+
+    #onboarding h1 {
+      font-weight: 700;
+      font-size: 20px;
+      margin: 0;
+    }
 
     /* Panels & cards */
-    #onboarding .panel { background: var(--cn-card); border: 1px solid var(--cn-border); border-radius: 16px; padding: 16px; }
-    #onboarding .panel h2 { font-weight: 700; font-size: 16px; margin: 0 0 8px; }
-    #onboarding .card { background: var(--cn-card); border: 1px solid var(--cn-border); border-radius: 12px; padding: 12px; }
-    #onboarding .card h3 { font-weight: 700; font-size: 15px; margin: 0 0 6px; }
+    #onboarding .panel {
+      background: var(--cn-card);
+      border: 1px solid var(--cn-border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    #onboarding .panel h2 {
+      font-weight: 700;
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+
+    #onboarding .card {
+      background: var(--cn-card);
+      border: 1px solid var(--cn-border);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    #onboarding .card h3 {
+      font-weight: 700;
+      font-size: 15px;
+      margin: 0 0 6px;
+    }
 
     /* Forms & options */
-    #onboarding fieldset { border: none; padding: 0; margin: 0; }
-    #onboarding legend { font-weight: 700; margin-bottom: 8px; }
-    #onboarding .opt { display: flex; gap: 10px; align-items: flex-start; background: #fffdf8; border: 1px solid var(--cn-border); border-radius: 12px; padding: 10px; }
-    #onboarding .opt input { margin-top: 2px; }
-    #onboarding .badge { display: inline-block; font-size: 12px; padding: 2px 6px; border: 1px solid var(--cn-border); border-radius: 999px; background: #f8efe1; }
+    #onboarding fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #onboarding legend {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    #onboarding .opt {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #fffdf8;
+      border: 1px solid var(--cn-border);
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    #onboarding .opt input {
+      margin-top: 2px;
+    }
+
+    #onboarding .badge {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 6px;
+      border: 1px solid var(--cn-border);
+      border-radius: 999px;
+      background: #f8efe1;
+    }
 
     /* Controls */
-    #onboarding .controls-inline{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:6px 0 10px; }
-    #onboarding button{ font: inherit; cursor: pointer; background: #fffdf8; border: 1px solid var(--cn-border); border-radius: 10px; padding: 8px 10px; }
-    #onboarding .pill{ display:inline-flex; gap:6px; align-items:center; padding:6px 10px; background:#fffdf8; border:1px solid var(--cn-border); border-radius:999px; }
+    #onboarding .controls-inline {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 6px 0 10px;
+    }
+
+    #onboarding button {
+      font: inherit;
+      cursor: pointer;
+      background: #fffdf8;
+      border: 1px solid var(--cn-border);
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    #onboarding .pill {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      padding: 6px 10px;
+      background: #fffdf8;
+      border: 1px solid var(--cn-border);
+      border-radius: 999px;
+    }
 
     /* Lists & text */
-    #onboarding p{ margin:8px 0; }
-    #onboarding ul, #onboarding ol{ margin:6px 0 0 18px; padding:0; }
-    #onboarding li{ margin:4px 0; font-size: 12px; }
-    #onboarding .small{ font-size:13px; }
-    #onboarding .divider{ border:0; border-top:1px solid var(--cn-border); margin:10px 0; }
+    #onboarding p {
+      margin: 8px 0;
+    }
+
+    #onboarding ul,
+    #onboarding ol {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+
+    #onboarding li {
+      margin: 4px 0;
+      font-size: 12px;
+    }
+
+    #onboarding .small {
+      font-size: 13px;
+    }
+
+    #onboarding .divider {
+      border: 0;
+      border-top: 1px solid var(--cn-border);
+      margin: 10px 0;
+    }
 
     /* Key-value rows */
-    #onboarding .kvs{ display:grid; grid-template-columns:1fr; gap:6px; }
-    #onboarding .kv{ display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--cn-border); }
-    #onboarding .kv .k{ color:var(--cn-muted); }
-    #onboarding .kv .v{ font-weight:700; }
+    #onboarding .kvs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    #onboarding .kv {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--cn-border);
+    }
+
+    #onboarding .kv .k {
+      color: var(--cn-muted);
+    }
+
+    #onboarding .kv .v {
+      font-weight: 700;
+    }
   </style>
 </head>
+
 <body style="background:#f6f1e8;">
 
-<div id="header">
-  <img src="photos/thumbnail_crustnet_logo.png"
-       alt="crustnet_logo"
-       style="width: 400px; height: auto; display: block; margin: 20px auto;">
+  <div id="header">
+    <img src="photos/thumbnail_crustnet_logo.png" alt="crustnet_logo"
+      style="width: 400px; height: auto; display: block; margin: 20px auto;">
 
-  <div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="people.html">People</a>
-    <a href="sites.html">Sites</a>
-    <a class="active" href="protocols.html">Protocols</a>
-    <a href="videos.html">Videos</a>
-    <a href="FAQ.html">FAQ</a>
+    <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="people.html">People</a>
+      <a href="sites.html">Sites</a>
+      <a class="active" href="protocols.html">Protocols</a>
+      <a href="videos.html">Videos</a>
+      <a href="FAQ.html">FAQ</a>
+    </div>
   </div>
-</div>
 
-<div style="height: 150px; background-color: #d4cbb4;"></div> <!--spacer-->
+  <div style="height: 150px; background-color: #d4cbb4;"></div> <!--spacer-->
 
 
   <section id="onboarding">
     <header>
       <div class="wrap">
         <h1>CrustNet Effort Calculator</h1>
-        <div class="muted small">Pick tiers and options using the checkboxes on the left. 
-          <br>The right side reports how these options will affect your participation and field effort level in CrustNet.
+        <div class="muted small">Pick tiers and options using the checkboxes on the left.
+          <br>The right side reports how these options will affect your participation and field effort level in
+          CrustNet.
           <br>This calculator should reflect the protocol, but in case of differences, defer to the protocol.
           <br>Field time estimates are best guesses based on past sampling, but may vary by site and group.
-</div>
+        </div>
       </div>
     </header>
 
@@ -107,66 +248,85 @@
           <!-- Tier 1 (mandatory) -->
           <fieldset>
             <legend>Tier 1 (one-time survey) <span class="badge">mandatory</span></legend>
-            <label class="opt" aria-disabled="true"><input type="checkbox" id="t1" checked disabled /> <div>
-              <div><strong>Tier 1</strong> — <span class="muted">10 plots and 3 transects</span></div>
-              <div class="small muted">Effort: 5-6 people, ~2 days total, one visit.</div>
-              <ul class="small muted" style="margin-top:6px">
-                <li>LPI transects for plants and biocrusts (three, each 30 meters)</li>
-                <li>Plant–biocrust cooccurrence quadrats (10 per transect, each 0.25 x 0.25 meters)</li>
-                <li>Biodiversity survey (one 40-minute survey)</li>
-                <li>Structure–function plots (10 plots, each 0.25 x 0.25 meters)</li>
-                <li>Collections for the trait database (up to 15 samples of the 5 most dominant moss/lichen species on site)</li>
-              </ul>
-            </div></label>
+            <label class="opt" aria-disabled="true"><input type="checkbox" id="t1" checked disabled />
+              <div>
+                <div><strong>Tier 1</strong> — <span class="muted">10 plots and 3 transects</span></div>
+                <div class="small muted">Effort: 5-6 people, ~2 days total, one visit.</div>
+                <ul class="small muted" style="margin-top:6px">
+                  <li>LPI transects for plants and biocrusts (three, each 30 meters)</li>
+                  <li>Plant–biocrust cooccurrence quadrats (10 per transect, each 0.25 x 0.25 meters)</li>
+                  <li>Biodiversity survey (one 40-minute survey)</li>
+                  <li>Structure–function plots (10 plots, each 0.25 x 0.25 meters)</li>
+                  <li>Collections for the trait database (up to 15 samples of the 5 most dominant moss/lichen species on
+                    site)</li>
+                </ul>
+              </div>
+            </label>
           </fieldset>
 
           <!-- Tier 2 -->
           <fieldset>
             <legend>Tier 2 (simple experiments + monitoring)</legend>
-            <label class="opt"><input type="checkbox" id="t2_main" /> <div>
-              <div><strong>Disturbance-Recovery experiment</strong> <span class="badge">+16 plots</span></div>
-              <div class="small muted">Effort: 5-6 people, ~1 day setup + repeat sampling.</div>
-              <ul class="small muted" style="margin-top:6px">
-                <li>Full sledgehammer disturbance treatment with monitoring of recovery</li>
-                <li>Adds monitoring visits. 3-year commitment.</li>
-              </ul>
-            </div></label>
+            <label class="opt"><input type="checkbox" id="t2_main" />
+              <div>
+                <div><strong>Disturbance-Recovery experiment</strong> <span class="badge">+16 plots</span></div>
+                <div class="small muted">Effort: 5-6 people, ~1 day setup + repeat sampling.</div>
+                <ul class="small muted" style="margin-top:6px">
+                  <li>Full sledgehammer disturbance treatment with monitoring of recovery</li>
+                  <li>Adds monitoring visits. 3-year commitment.</li>
+                </ul>
+              </div>
+            </label>
 
-            <label class="opt"><input type="checkbox" id="t2_addon" /> <div>
-              <div><strong>Optional inoculum add-on for D-R</strong> <span class="badge">+8 plots</span></div>
-              <div class="small muted">Effort: 5-6 people, ~1 day setup + repeat sampling.</div>
-              <div class="small muted">Only available if Disturbance-Recovery is selected.</div>
-            </div></label>
+            <label class="opt"><input type="checkbox" id="t2_addon" />
+              <div>
+                <div><strong>Optional inoculum add-on for D-R</strong> <span class="badge">+8 plots</span></div>
+                <div class="small muted">Effort: 5-6 people, ~1 day setup + repeat sampling.</div>
+                <div class="small muted">Only available if Disturbance-Recovery is selected.</div>
+              </div>
+            </label>
 
-            <label class="opt"><input type="checkbox" id="t2_grad" /> <div>
-              <div><strong>Disturbance Gradient experiment</strong> <span class="badge" id="grad-plots-badge">+10 plots</span></div>
-              <div class="small muted">Effort: 5-6 people, ~2 days setup + repeat sampling.</div>
-              <ul class="small muted" style="margin-top:6px">
-                <li>Repeated sledgehammer disturbance treatment at varying levels</li>
-                <li>Adds monitoring visits. 3-year commitment.</li>
-                <li>If D-R is also selected, this becomes +8 plots.</li>
-              </ul>
+            <label class="opt"><input type="checkbox" id="t2_grad" />
+              <div>
+                <div><strong>Disturbance Gradient experiment</strong> <span class="badge" id="grad-plots-badge">+10
+                    plots</span></div>
+                <div class="small muted">Effort: 5-6 people, ~2 days setup + repeat sampling.</div>
+                <ul class="small muted" style="margin-top:6px">
+                  <li>Repeated sledgehammer disturbance treatment at varying levels</li>
+                  <li>Adds monitoring visits. 3-year commitment.</li>
+                  <li>If D-R is also selected, this becomes +8 plots.</li>
+                </ul>
 
-            </div></label>
+              </div>
+            </label>
           </fieldset>
 
           <!-- Tier 3 -->
           <fieldset>
             <legend>Tier 3 (infrastructure and optional components)</legend>
-            <label class="opt"><input type="checkbox" id="t3_drought" /> <div>
-              <div><strong>Drought component</strong></div>
-              <div class="small muted">Install drought shelters and sample over 3 years; equipment ~ $1000.</div>
-            </div></label>
+            <label class="opt"><input type="checkbox" id="t3_drought" />
+              <div>
+                <div><strong>Drought component</strong></div>
+                <div class="small muted">Construct and install drought shelters and sample over 3 years; equipment ~
+                  $1000.</div>
+              </div>
+            </label>
 
-            <label class="opt"><input type="checkbox" id="t3_common" /> <div>
-              <div><strong>Common garden component</strong></div>
-              <div class="small muted">Coordination with PI team required. More information forthcoming on this component.</div>
-            </div></label>
+            <label class="opt"><input type="checkbox" id="t3_ncycle" />
+              <div>
+                <div><strong>Spectral reflectance (optional)</strong> <span class="badge">no return visits</span></div>
+                <div class="small muted">Can be completed with Tier 1. Generates up to 48 petri-dish samples per site.
+                </div>
+              </div>
+            </label>
 
-            <label class="opt"><input type="checkbox" id="t3_ncycle" /> <div>
-              <div><strong>N-cycling and spectral reflectance of biocrust (optional))</strong> <span class="badge">no return visits</span></div>
-              <div class="small muted">Can be completed with Tier 1. Generates up to 48 petri-dish samples per site.</div>
-            </div></label>
+            <label class="opt"><input type="checkbox" id="t3_common" disabled />
+              <div>
+                <div><strong>Common garden component</strong></div>
+                <div class="small muted">Coordination with PI team required. More information forthcoming on this
+                  component.</div>
+              </div>
+            </label>
           </fieldset>
 
           <div class="controls-inline">
@@ -184,10 +344,22 @@
           <div class="card" id="summary">
             <h3>Summary</h3>
             <div class="kvs">
-              <div class="kv"><div class="k">Selected tiers</div><div class="v" id="selTiers">Tier 1</div></div>
-              <div class="kv"><div class="k">Tier 1 footprint</div><div class="v">1 ha area: 10 plots, 3 transects</div></div>
-              <div class="kv"><div class="k">Tier 2 plots (remain at site 3 years)</div><div class="v" id="totalPlots">0</div></div>
-              <div class="kv"><div class="k">Tier 3 plots (remain at site 3 years)</div><div class="v" id="tier3Summary">—</div></div>
+              <div class="kv">
+                <div class="k">Selected tiers</div>
+                <div class="v" id="selTiers">Tier 1</div>
+              </div>
+              <div class="kv">
+                <div class="k">Tier 1 footprint</div>
+                <div class="v">1 ha area: 10 plots, 3 transects</div>
+              </div>
+              <div class="kv">
+                <div class="k">Tier 2 plots (remain at site 3 years)</div>
+                <div class="v" id="totalPlots">0</div>
+              </div>
+              <div class="kv">
+                <div class="k">Tier 3 plots (remain at site 3 years)</div>
+                <div class="v" id="tier3Summary">—</div>
+              </div>
             </div>
           </div>
 
@@ -195,11 +367,12 @@
 
           <!-- Time by visit (single list) -->
           <div class="card" id="time">
-                <div class="controls-inline" id="crewbox">
-          <span class="pill"><input type="radio" name="crew" id="crew6" checked> <label for="crew6">Crew of 5-6</label></span>
-          <span class="pill"><input type="radio" name="crew" id="crew2"> <label for="crew2">Crew of 2</label></span>
+            <div class="controls-inline" id="crewbox">
+              <span class="pill"><input type="radio" name="crew" id="crew6" checked> <label for="crew6">Crew of
+                  5-6</label></span>
+              <span class="pill"><input type="radio" name="crew" id="crew2"> <label for="crew2">Crew of 2</label></span>
             </div>
-        <h3>Estimated field time by visit</h3>
+            <h3>Estimated field time by visit</h3>
             <ul id="timeList"></ul>
           </div>
 
@@ -236,7 +409,7 @@
       tiers: {
         t1: {
           label: 'Tier 1',
-          effort_person_days: 10, 
+          effort_person_days: 10,
           papers: [
             'Co-authorship on 4 core Tier 1 papers (2 co-authors per group)',
             'Co-authorship on a CrustNet data paper'
@@ -279,52 +452,52 @@
             '~75 trait specimens in tupperware + tissue'
           ]
         },
-      t2: {
-        label: 'Tier 2',
+        t2: {
+          label: 'Tier 2',
 
-        components: {
-          dr:        { initial_pd: 5, revisit_pd: 2.5 }, // Disturbance-Recovery
-          dr_addon:  { initial_pd: 5,  revisit_pd: 2.5 }, // Optional add-on for D-R
-          grad:      { initial_pd: 10,  revisit_pd: 5 }  // Disturbance Gradient
+          components: {
+            dr: { initial_pd: 5, revisit_pd: 2.5 }, // Disturbance-Recovery
+            dr_addon: { initial_pd: 5, revisit_pd: 2.5 }, // Optional add-on for D-R
+            grad: { initial_pd: 10, revisit_pd: 5 }  // Disturbance Gradient
+          },
+          papers: [
+            'Co-authorship on 4-5 core Tier 2 papers (2 co-authors per contributing group)'
+          ],
+          // supplies
+          provide_additions_base: [
+            ['— Tier 2 additions —'],
+            'Permanent plot markers (e.g., aluminum tags on landscaping staples or 6" nails)',
+            '3 lb. sledgehammer'
+          ],
+          provide_additions_addon: [
+            ['— Disturbance-Recovery optional add-on (extra) —'],
+            'Bucket or tub to collect inoculum',
+            '1 x 1 cm grid or screen to homogenize inoculum',
+            'Measuring cup to inoculate the right amount on each plot'
+          ],
+          samples_per_full_component: [
+            '40 scraped surface 0-1 cm samples (120 g each) in plastic bags',
+            '40 cored subsurface 1-5 cm samples (120 g each) in plastic bags',
+            '40 RNAlater subsamples in 5 mL tubes',
+            '40 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'
+          ]
         },
-        papers: [
-          'Co-authorship on 4-5 core Tier 2 papers (2 co-authors per contributing group)'
-        ],
-        // supplies
-        provide_additions_base: [
-          ['— Tier 2 additions —'],
-          'Permanent plot markers (e.g., aluminum tags on landscaping staples or 6" nails)',
-          '3 lb. sledgehammer'
-        ],
-        provide_additions_addon: [
-          ['— Disturbance-Recovery optional add-on (extra) —'],
-          'Bucket or tub to collect inoculum',
-          '1 x 1 cm grid or screen to homogenize inoculum',
-          'Measuring cup to inoculate the right amount on each plot'
-        ],
-        samples_per_full_component: [
-          '40 scraped surface 0-1 cm samples (120 g each) in plastic bags',
-          '40 cored subsurface 1-5 cm samples (120 g each) in plastic bags',
-          '40 RNAlater subsamples in 5 mL tubes',
-          '40 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'
-        ]
-      },
 
-      t3: {
-        label: 'Tier 3',
-        // person-days per component
-        components: {
-          drought: { initial_pd: 2.5, revisit_pd: 1 },
-          common:  { initial_pd: 10, revisit_pd: 2.5 },
-          ncycle:  { initial_pd: 1, revisit_pd: 0 } // “none” modeled as 0
-        },
-        papers: [ 'Co-authorship on 2 core Tier 3 papers (2 co-authors per contributing group)' ]
+        t3: {
+          label: 'Tier 3',
+          // person-days per component
+          components: {
+            drought: { initial_pd: 10, revisit_pd: 2.5 },
+            common: { initial_pd: 10, revisit_pd: 2.5 },
+            ncycle: { initial_pd: 1, revisit_pd: 0 } // “none” modeled as 0
+          },
+          papers: ['Co-authorship on 2 core Tier 3 papers (2 co-authors per contributing group)']
+        }
       }
-    }
     };
 
     // Tier 2 plot math
-    function calcTier2Plots({ dr, addon, grad }){
+    function calcTier2Plots({ dr, addon, grad }) {
       let plots = 0;
       if (dr) plots += 16;
       if (addon && dr) plots += 8; // only if DR selected
@@ -332,7 +505,7 @@
       return plots;
     }
 
-    function daysForCrew(personDays, crew){ return (personDays / crew); }
+    function daysForCrew(personDays, crew) { return (personDays / crew); }
 
     // DOM handles
     const el = id => document.getElementById(id);
@@ -363,14 +536,14 @@
     el('reset').addEventListener('click', () => {
       t2_main.checked = false; t2_addon.checked = false; t2_grad.checked = false;
       t3_drought.checked = false; t3_common.checked = false; t3_ncycle.checked = false;
-      crew6.checked = true; update(); window.scrollTo({top:0, behavior:'smooth'});
+      crew6.checked = true; update(); window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    
-    function updateGradBadge(){ gradBadge.textContent = t2_main.checked ? '+8 plots' : '+10 plots'; }
-    function li(text){ const n = document.createElement('li'); n.textContent = text; return n; }
-    function pushLine(listEl, label, pd){ const crew = crew6.checked ? 5 : 2; const days = daysForCrew(pd, crew).toFixed(1); listEl.appendChild(li(`${label}: ${days} days`)); return +days; }
 
-    function update(){
+    function updateGradBadge() { gradBadge.textContent = t2_main.checked ? '+8 plots' : '+10 plots'; }
+    function li(text) { const n = document.createElement('li'); n.textContent = text; return n; }
+    function pushLine(listEl, label, pd) { const crew = crew6.checked ? 5 : 2; const days = daysForCrew(pd, crew).toFixed(1); listEl.appendChild(li(`${label}: ${days} days`)); return +days; }
+
+    function update() {
       updateGradBadge();
 
       // Selected tiers
@@ -384,24 +557,23 @@
       totalPlots.textContent = String(plots);
 
       // --- Tier 2 component plots ---
-      const drPlots   = t2_main.checked ? 16 : 0;
-      const addPlots  = (t2_main.checked && t2_addon.checked) ? 8 : 0;
-      const gradPlots = t2_grad.checked ? (t2_main.checked ? 8 : 10) : 0;
+      // --- Tier 2 component plots ---
+      const drPlots = t2_main.checked ? 16 : 0;
+      const addPlots = (t2_main.checked && t2_addon.checked) ? 8 : 0;
 
-      // --- Tier 2 sample math ---
-      // DR & add-on: 1 sample per plot; Gradient: 2 samples per plot
-      const t2_scraped     = drPlots + addPlots + (gradPlots * 2);
-      const t2_subsurface  = 0;        // same count pattern
-      const t2_rnalater    = t2_scraped;        // one per scraped sample
-      const t2_nfix_cores = t2_grad.checked ? 40 : 0;
-
+      // DR & add-on: 1 sample per plot; Gradient: 18 samples (10 pre + 8 post) if standalone
+      const dg_samples = t2_grad.checked ? (t2_main.checked ? 16 : 18) : 0;
+      const t2_scraped = drPlots + addPlots + dg_samples;
+      const t2_subsurface = 0;        // same count pattern
+      const t2_rnalater = t2_scraped;        // one per scraped sample
+      const t2_nfix_cores = t2_grad.checked ? (t2_main.checked ? 32 : 36) : 0;
 
       // Tier 3 summary line
       const tier3El = document.getElementById('tier3Summary');
       if (tier3El) {
         const bits = [];
         if (t3_drought.checked) bits.push('6 drought shelters');
-        if (t3_common.checked)  bits.push('common garden');
+        if (t3_common.checked) bits.push('common garden');
         tier3El.textContent = bits.length ? bits.join(', ') : '—';
       }
 
@@ -431,12 +603,12 @@
       addHeading('Visit 1');
       let v1 = 0;
       v1 += pushLine(timeList, 'Tier 1', DATA.tiers.t1.effort_person_days);
-      if (t2_main.checked)   v1 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (initial)', t2.dr.initial_pd);
-      if (t2_addon.checked)  v1 += pushLine(timeList, 'Tier 2 — D-R add-on (initial)', t2.dr_addon.initial_pd);
-      if (t2_grad.checked)   v1 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (initial)', t2.grad.initial_pd);
-      if (t3_common.checked) v1 += pushLine(timeList, 'Tier 3 — Common garden (initial)', t3.common.initial_pd);
-      if (t3_ncycle.checked) v1 += pushLine(timeList, 'Tier 3 — N-cycling & spectral (initial)', t3.ncycle.initial_pd);
-      if (t3_drought.checked) v1 += pushLine(timeList, 'Tier 3 — Drought (setup)', t3.drought.initial_pd);
+      if (t2_main.checked) v1 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (initial)', t2.dr.initial_pd);
+      if (t2_addon.checked) v1 += pushLine(timeList, 'Tier 2 — D-R add-on (initial)', t2.dr_addon.initial_pd);
+      if (t2_grad.checked) v1 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (initial)', t2.grad.initial_pd);
+      if (t3_common.checked) timeList.appendChild(li('Tier 3 — Common garden: Coming soon...'));
+      if (t3_ncycle.checked) v1 += pushLine(timeList, 'Spectral reflectance (optional)', t3.ncycle.initial_pd);
+      if (t3_drought.checked) v1 += pushLine(timeList, 'Tier 3 — Drought (shelter construction + setup)', t3.drought.initial_pd);
       addStrongLine(`Subtotal (Visit 1): ~${v1.toFixed(0)} days`);
       addDivider();
       total += v1;
@@ -445,10 +617,10 @@
       if (t2_main.checked || t2_addon.checked || t2_grad.checked || t3_common.checked || t3_drought.checked) {
         addHeading('Visit 2 (after 1 year)');
         let v2 = 0;
-        if (t2_main.checked)   v2 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (subsequent)', t2.dr.revisit_pd);
-        if (t2_addon.checked)  v2 += pushLine(timeList, 'Tier 2 — D-R add-on (subsequent)', t2.dr_addon.revisit_pd);
-        if (t2_grad.checked)   v2 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
-        if (t3_common.checked) v2 += pushLine(timeList, 'Tier 3 — Common garden (subsequent)', t3.common.revisit_pd);
+        if (t2_main.checked) v2 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (subsequent)', t2.dr.revisit_pd);
+        if (t2_addon.checked) v2 += pushLine(timeList, 'Tier 2 — D-R add-on (subsequent)', t2.dr_addon.revisit_pd);
+        if (t2_grad.checked) v2 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
+        if (t3_common.checked) timeList.appendChild(li('Tier 3 — Common garden: Coming soon...'));
         if (t3_drought.checked) v2 += pushLine(timeList, 'Tier 3 — Drought (visit 1)', t3.drought.revisit_pd);
         addStrongLine(`Subtotal (Visit 2): ~${v2.toFixed(0)} days`);
         addDivider();
@@ -459,10 +631,10 @@
       if (t2_main.checked || t2_addon.checked || t2_grad.checked || t3_common.checked || t3_drought.checked) {
         addHeading('Visit 3 (after 2 years)');
         let v3 = 0;
-        if (t2_main.checked)   v3 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (subsequent)', t2.dr.revisit_pd);
-        if (t2_addon.checked)  v3 += pushLine(timeList, 'Tier 2 — D-R add-on (subsequent)', t2.dr_addon.revisit_pd);
-        if (t2_grad.checked)   v3 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
-        if (t3_common.checked) v3 += pushLine(timeList, 'Tier 3 — Common garden (subsequent)', t3.common.revisit_pd);
+        if (t2_main.checked) v3 += pushLine(timeList, 'Tier 2 — Disturbance-Recovery (subsequent)', t2.dr.revisit_pd);
+        if (t2_addon.checked) v3 += pushLine(timeList, 'Tier 2 — D-R add-on (subsequent)', t2.dr_addon.revisit_pd);
+        if (t2_grad.checked) v3 += pushLine(timeList, 'Tier 2 — Disturbance Gradient (subsequent)', t2.grad.revisit_pd);
+        if (t3_common.checked) timeList.appendChild(li('Tier 3 — Common garden: Coming soon...'));
         if (t3_drought.checked) v3 += pushLine(timeList, 'Tier 3 — Drought (visit 2)', t3.drought.revisit_pd);
         addStrongLine(`Subtotal (Visit 3): ~${v3.toFixed(0)} days`);
         addDivider();
@@ -476,7 +648,7 @@
 
 
 
-      
+
 
       // Papers
       papers.innerHTML = '';
@@ -547,44 +719,44 @@
       kit.innerHTML = '';
       DATA.tiers.t1.kit.forEach(x => kit.appendChild(li(x)));
 
-    // Samples
-    samples.innerHTML = '';
+      // Samples
+      samples.innerHTML = '';
 
-    const addHeader = (text) => {
-      const h = document.createElement('li');
-      h.innerHTML = `<strong>${text}</strong>`;
-      samples.appendChild(h);
-    };
+      const addHeader = (text) => {
+        const h = document.createElement('li');
+        h.innerHTML = `<strong>${text}</strong>`;
+        samples.appendChild(h);
+      };
 
-    // Tier 1
-    addHeader('Tier 1');
-    DATA.tiers.t1.samples.forEach(x => samples.appendChild(li(x)));
+      // Tier 1
+      addHeader('Tier 1');
+      DATA.tiers.t1.samples.forEach(x => samples.appendChild(li(x)));
 
-    // Tier 2 (only if any Tier 2 component is selected)
-    if (t2_main.checked || t2_addon.checked || t2_grad.checked) {
-      addHeader('Tier 2');
-      if (t2_scraped > 0) {
-        samples.appendChild(li(`${t2_scraped} scraped surface 0–1 cm samples (120 g each) in plastic bags`));
-        samples.appendChild(li(`${t2_rnalater} RNAlater subsamples in 5 mL tubes`));
+      // Tier 2 (only if any Tier 2 component is selected)
+      if (t2_main.checked || t2_addon.checked || t2_grad.checked) {
+        addHeader('Tier 2 (each visit)');
+        if (t2_scraped > 0) {
+          samples.appendChild(li(`${t2_scraped} scraped surface 0–1 cm samples (120 g each) in plastic bags`));
+          samples.appendChild(li(`${t2_rnalater} RNAlater subsamples in 5 mL tubes`));
+        }
+        if (t2_nfix_cores > 0) {
+          samples.appendChild(li(`${t2_nfix_cores} N-fix cores in N-fix tubes`));
+        }
       }
-      if (t2_nfix_cores > 0) {
-        samples.appendChild(li(`${t2_nfix_cores} N-fix cores (4 per disturbance-gradient plot) in N-fix tubes`));
+
+      // Tier 3 (adds its own samples)
+      if (t3_drought.checked) {
+        addHeader('Tier 3 (drought)');
+        samples.appendChild(li('6 scraped surface 0–1 cm samples (120 g each) in plastic bags'));
+        samples.appendChild(li('6 cored subsurface 1–5 cm samples (120 g each) in plastic bags'));
+        samples.appendChild(li('6 RNAlater subsamples in 5 mL tubes'));
+        samples.appendChild(li('6 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'));
       }
-    }
 
-    // Tier 3 (adds its own samples)
-    if (t3_drought.checked) {
-      addHeader('Tier 3 (drought)');
-      samples.appendChild(li('6 scraped surface 0–1 cm samples (120 g each) in plastic bags'));
-      samples.appendChild(li('6 cored subsurface 1–5 cm samples (120 g each) in plastic bags'));
-      samples.appendChild(li('6 RNAlater subsamples in 5 mL tubes'));
-      samples.appendChild(li('6 N-fix cores (4 per disturbance-gradient plot) in N-fix tubes'));
-    }
-
-    if (t3_ncycle.checked) {
-      addHeader('Optional: (N-cycling & spectral)');
-      samples.appendChild(li('48 petri dishes for spectral & N-cycling measurements'));
-    }
+      if (t3_ncycle.checked) {
+        addHeader('Spectral reflectance (optional)');
+        samples.appendChild(li('48 petri dishes for spectral measurements'));
+      }
 
 
       // Enforce add-on rule
@@ -593,8 +765,9 @@
 
     }
 
-    [t2_main,t2_addon,t2_grad,t3_drought,t3_common,t3_ncycle,crew2,crew6].forEach(c => c.addEventListener('change', update));
+    [t2_main, t2_addon, t2_grad, t3_drought, t3_ncycle, crew2, crew6].forEach(c => c.addEventListener('change', update));
     update();
   </script>
 </body>
+
 </html>
