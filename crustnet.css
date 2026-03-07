@@ -1,76 +1,76 @@
 html {
 	overflow-y: scroll;
-	}
+}
 
 body {
 	margin: 0;
-	}
+}
 
-#header{
-    position: fixed;
-    z-index: 9999;
-    text-align:center;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: #d4cbb4;
-    color: black;
+#header {
+	position: fixed;
+	z-index: 9999;
+	text-align: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background-color: #d4cbb4;
+	color: black;
 }
 
 h1 {
-  font-family: 'interstate', sans-serif;
-  font-weight: 700;
+	font-family: 'interstate', sans-serif;
+	font-weight: 700;
 }
 
 
 /* Background color for top navigation */
 .topnav {
-  background-color: #dba458;
-  overflow: hidden;
-  width: 100%;
-  text-align: center;
-  padding:5px;
+	background-color: #dba458;
+	overflow: hidden;
+	width: 100%;
+	text-align: center;
+	padding: 5px;
 }
 
 /* Links inside the navigation bar */
 .topnav a {
-  float: center;
-  color: black;
-  text-align: center;
-  padding: 20px 20px;
-  text-decoration: none;
-  font-size: 17px;
-  font-family: "interstate", sans-serif;
+	float: center;
+	color: black;
+	text-align: center;
+	padding: 20px 20px;
+	text-decoration: none;
+	font-size: 17px;
+	font-family: "interstate", sans-serif;
 }
 
 /* Nav bar links hover */
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+	background-color: #ddd;
+	color: black;
 }
 
 /* Color to the active/current link */
 .topnav a.active {
-  background-color: #91580c;
-  color: white;
+	background-color: #91580c;
+	color: white;
 }
 
-#main{
-   width: 100%;
-   background: url('photos/crust1.jpg') no-repeat;
-   background-attachment: fixed;
-   background-position: center center;
-   background-size: cover;
-   margin: 140px 0 0 0;
-   padding: 20px 0 20px 0;
+#main {
+	width: 100%;
+	background: url('photos/crust1.jpg') no-repeat;
+	background-attachment: fixed;
+	background-position: center center;
+	background-size: cover;
+	margin: 140px 0 0 0;
+	padding: 20px 0 20px 0;
 }
 
-#people{
-   /* width: 100%; */
-   margin: 140px 0 0 0;
-   padding: 20px 0 20px 0;
-   background-color: #d4cbb4;
+#people {
+	/* width: 100%; */
+	margin: 140px 0 0 0;
+	padding: 20px 0 20px 0;
+	background-color: #d4cbb4;
 }
 
 
@@ -78,12 +78,13 @@ h1 {
 	font-family: "interstate", sans-serif;
 	font-weight: 500;
 	font-style: normal;
-	text-align:left;
+	text-align: left;
 	line-height: 26px;
-	background-color: rgb(230,218,202,0.8);
+	background-color: rgb(230, 218, 202, 0.8);
 	border-radius: 25px;
 	margin-top: 25px;
-	padding: 8px 25px 25px 25px; /* top, right, bottom, left */
+	padding: 8px 25px 25px 25px;
+	/* top, right, bottom, left */
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 65ch;
@@ -125,20 +126,23 @@ h1 {
 	height: auto;
 	border-radius: 8px;
 	object-fit: cover;
-  }
+}
 
 @media screen and (max-width: 700px) {
-  .person {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+	.topnav a {
+		padding: 10px 8px;
+		font-size: 14px;
+	}
 
-.person img{
-	padding: 0;
-	margin-bottom: 10px;
-	max-width: 100%;
-	height: auto;
- }
+	.person {
+		flex-direction: column;
+	}
+
+	.person img {
+		padding: 0;
+		margin: 0 auto 10px auto;
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
 }
-	
