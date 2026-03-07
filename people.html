@@ -186,11 +186,25 @@
     <div class="reg">
       <h1 style="font-size: 20px; text-align: center;"><b>SAMPLER-PARTNERS</b></h1>
 
-      <div class="person-grid" style="
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0px 40px;
-  ">
+      <style>
+        .person-grid {
+          column-count: 2;
+          column-gap: 40px;
+        }
+
+        .person-grid .person {
+          break-inside: avoid;
+          margin-bottom: 20px !important;
+        }
+
+        @media screen and (max-width: 700px) {
+          .person-grid {
+            column-count: 1;
+          }
+        }
+      </style>
+
+      <div class="person-grid">
 
         <div class="person" style="margin: 0;">
           <div>
