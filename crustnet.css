@@ -86,7 +86,9 @@ h1 {
 	padding: 8px 25px 25px 25px; /* top, right, bottom, left */
 	margin-left: auto;
 	margin-right: auto;
-	width: 800px;
+	max-width: 65ch;
+	width: 90%;
+	box-sizing: border-box;
 }
 
 .person {
@@ -135,6 +137,8 @@ h1 {
 .person img{
 	padding: 0;
 	margin-bottom: 10px;
+	max-width: 100%;
+	height: auto;
  }
 }
 	
